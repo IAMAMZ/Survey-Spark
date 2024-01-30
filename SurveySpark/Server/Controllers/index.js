@@ -16,7 +16,7 @@ function DisplayHome(req, res, next)
   console.log(`username: ${user.username}`);
 
   /* Now Render the ejs page */
-  res.render('index', {title: 'Home', page: 'home'});
+  res.render('index', {title: 'SurveySpark', page: 'home'});
 }
 
 module.exports = {
