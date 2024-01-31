@@ -1,5 +1,3 @@
-const User = require('../Models/user');
-
 /**
  * This function will display the home page
  *
@@ -10,17 +8,30 @@ const User = require('../Models/user');
  */
 function DisplayHome(req, res, next)
 {
-  /* No need to create a User, but demonstrating how to use the Model */
-  let user = new User();
-  user.username = 'admin';
-  console.log(`username: ${user.username}`);
-
-  /* Now Render the ejs page */
-  res.render('index', {title: 'SurveySpark', page: 'home'});
+  res.render('index', {title: 'Home', page: 'home'});
 }
 
+function DisplayAbout(req, res, next)
+{
+  res.render('index', {title: 'About Us', page: 'about'});
+}
+
+function DisplayContact(req, res, next)
+{
+  res.render('index', {title: 'Contact Us', page: 'contact'});
+}
+
+function DisplayServices(req, res, next)
+{
+  res.render('index', {title: 'Services', page: 'services'});
+}
+
+
 module.exports = {
- DisplayHome: DisplayHome 
+ DisplayHome: DisplayHome,
+ DisplayAbout: DisplayAbout,
+ DisplayContact: DisplayContact,
+ DisplayServices: DisplayServices
 }
 
   
