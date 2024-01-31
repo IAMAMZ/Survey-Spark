@@ -1,1 +1,69 @@
-/* Custom CSS Goes Here */
+/* Global */
+
+* {
+    font-family: "Rubik", sans-serif;
+}
+
+/* Home Header */
+
+.home-header {
+    background-color: #ffffff;
+}
+.home-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 3%;
+}
+.home-header-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.home-header-column:first-child {
+    gap: 60px;
+}
+.home-header-column:last-child {
+    gap: 30px;
+}
+.home-header-column img {
+    height: 50px;
+    width: auto;
+}
+.home-header-nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.home-header-nav-bar a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+.home-login-btn, .home-sign-up-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.home-sign-up-btn {
+    background-color: #4054ec;
+}
+.home-login-btn a {
+    text-decoration: none;
+    color: #4054ec;
+    font-weight: 600;
+}
+.home-sign-up-btn a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+}
