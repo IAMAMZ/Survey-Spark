@@ -3,8 +3,20 @@
 * {
     font-family: "Rubik", sans-serif;
 }
-main {
-    padding: 1% 3%;
+section {
+    padding: 5% 3%;
+}
+.blue {
+    background-color: #4054ec;
+}
+.white {
+    background-color: #f4f4f4;
+}
+.button {
+    transition: transform 0.3s ease-in-out;;
+}
+.button:hover {
+    transform: translateY(-3px);
 }
 
 /* Home Header */
@@ -181,4 +193,68 @@ main {
     margin: 0;
     padding: 0;
     font-family: "Archivo", sans-serif;
+}
+
+/* Home */
+
+/* home-masthead */
+
+.home-masthead {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home-masthead-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.home-masthead h1 {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 3.5em;
+}
+.home-masthead h2 {
+    color: #ffffff;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.home-masthead-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.home-get-started-btn-main {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+}
+.home-get-started-btn-main a {
+    text-decoration: none;
+    color: #4054ec;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.home-watch-demo-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+}
+.home-watch-demo-btn a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
 }
