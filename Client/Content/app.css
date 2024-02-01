@@ -10,7 +10,7 @@ section {
     background-color: #4054ec;
 }
 .white {
-    background-color: #f4f4f4;
+    background-color: #ffffff;
 }
 .button {
     transition: transform 0.3s ease-in-out;;
@@ -267,4 +267,30 @@ section {
     font-weight: 600;
     margin: 0;
     padding: 0;
+}
+
+/* home-product-stats */
+
+.home-product-stats-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 5%;
+}
+.home-product-stat {
+    border-top: 10px solid #4054ec;
+    flex-basis: 25%;
+}
+.home-product-stat h1 {
+    padding-top: 6%;
+    color: #4054ec;
+    font-weight: 600;
+    font-size: 2em;
+}
+.home-product-stat p {
+    color: #000000;
+    font-weight: 500;
+    text-align: left;
+    font-size: 1.2em;
 }
