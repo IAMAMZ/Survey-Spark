@@ -122,6 +122,7 @@ section {
     padding: 8px 12px;
     background-color: #4054ec;
     border-radius: 10px;
+    cursor: pointer;
 }
 .home-get-started-btn a {
     color: #ffffff;
