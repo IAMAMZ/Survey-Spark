@@ -270,28 +270,28 @@ section {
     padding: 0;
 }
 
-/* About */
-.about-header{
-    font-family: "Rubik", sans-serif;
-    background-color: #4054ec;;
+/* home-product-stats */
+
+.home-product-stats-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 5%;
 }
-.about-header h1{
-    font-size: 100px;
+.home-product-stat {
+    border-top: 10px solid #4054ec;
+    flex-basis: 25%;
+}
+.home-product-stat h1 {
+    padding-top: 6%;
+    color: #4054ec;
     font-weight: 600;
-    color: #ffffff;
-    text-align: center;
-    padding-top: 20px;
+    font-size: 2em;
 }
-.about-h2 h2{
-    font-size: 3em;
-    font-weight: bold;
+.home-product-stat p {
     color: #000000;
-    text-align: center;
-}
-.about-h2 p{
-    font-size: 2.1em;
     font-weight: 500;
-<<<<<<< HEAD
     text-align: left;
     font-size: 1.2em;
 }
@@ -318,8 +318,6 @@ section {
 .about-h2 p{
     font-size: 2.1em;
     font-weight: 500;
-=======
->>>>>>> 0555c0d8d0d0437ccd73176b698c9653cd6ed8b4
     color: #000000;
     text-align: center;
 }
@@ -343,10 +341,5 @@ section {
     color: #333; /* Set the font color for list items */
     margin-top: 15px; /* Add margin above each list item */
     margin-bottom: 15px; /* Add margin below each list item */
-<<<<<<< HEAD
-}
-=======
 }
 
-/*End of About*/
->>>>>>> 0555c0d8d0d0437ccd73176b698c9653cd6ed8b4
