@@ -295,3 +295,50 @@ section {
     text-align: left;
     font-size: 1.2em;
 }
+
+/* About */
+
+.about-header{
+    font-family: "Rubik", sans-serif;
+    background-color: #4054ec;;
+}
+.about-header h1{
+    font-size: 100px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 20px;
+}
+.about-h2 h2{
+    font-size: 3em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+}
+.about-h2 p{
+    font-size: 2.1em;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+}
+.team{
+    background-color: #4054ec;
+}
+.team h2{
+    font-size: 3em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+}
+.team p{
+    font-size: 2.1em;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+}
+.team ul li{
+    font-size: 1.5em; /* Set the font size for list items */
+    color: #333; /* Set the font color for list items */
+    margin-top: 15px; /* Add margin above each list item */
+    margin-bottom: 15px; /* Add margin below each list item */
+}
