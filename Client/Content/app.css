@@ -383,3 +383,67 @@ section {
 .btn-submit-contact{
     margin-top: 30px;
 }
+
+/* Survey Services Section */
+.services-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+.service-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.service-intro {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: #555;
+}
+
+.feature-list li:before {
+    content: "\2713"; /* Unicode check mark */
+    position: absolute;
+    left: 0;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.cta-button {
+    display: block;
+    width: max-content;
+    margin: 30px auto 0;
+    padding: 10px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
