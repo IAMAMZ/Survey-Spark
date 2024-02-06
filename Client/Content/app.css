@@ -296,6 +296,41 @@ section {
     font-size: 1.2em;
 }
 
+/* home-get-started */
+
+
+.home-get-started {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home-get-started-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.home-get-started-container h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 600;
+}
+.home-learn-more-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+}
+.home-learn-more-btn a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
 /* About */
 
 .about-header{
