@@ -296,8 +296,102 @@ section {
     font-size: 1.2em;
 }
 
-/* home-get-started */
+/* home-features */
 
+.home-features-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.home-features-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.home-features-title h1 {
+    color: #000000;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+.home-features-title p {
+    color: #595959;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.home-features-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 3%;
+    gap: 15px;
+}
+.home-features-item-row {
+    flex-basis: 50%;
+}
+.home-features-item-row:first-child {
+    padding: 3% 0;
+}
+.home-features-item img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+.home-features-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.home-features-item-details h1 {
+    font-weight: 600;
+    color: #4054ec;
+    text-align: left;
+    font-size: 2.5em;
+}
+.home-features-item-details p {
+    font-weight: 500;
+    color: #595959;
+    text-align: left;
+    font-size: 1.2em;
+}
+.home-features-item div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.home-features-item .home-watch-demo-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #4054ec;
+}
+.home-features-item .home-watch-demo-btn a {
+    color: #4054ec;
+}
+.home-features-item .home-get-started-btn-main {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #4054ec;
+    border: 2px solid #4054ec;
+}
+.home-features-item .home-get-started-btn-main a {
+    color: #ffffff;
+}
+.home-features-item-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* home-get-started */
 
 .home-get-started {
     display: flex;
