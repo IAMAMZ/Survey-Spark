@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const Survey = require("../Models/Survery.js");
 const Response = require("../Models/Response.js");
-const userSchema = require("../Models/User.js");
 
 const hbs = require("hbs");
 

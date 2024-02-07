@@ -6,32 +6,23 @@
  * @param {Response} res
  * @param {NextFunction} next
  */
-function DisplayHome(req, res, next)
-{
-  res.render('index', {title: 'Home', page: 'home'});
+function DisplayHome(req, res, next) {
+  res.render("index", { title: "Home", page: "home" });
 }
 
-function DisplayAbout(req, res, next)
-{
-  res.render('index', {title: 'About Us', page: 'about'});
+function DisplayAbout(req, res, next) {
+  res.render("index", { title: "About Us", page: "about" });
 }
 
-function DisplayContact(req, res, next)
-{
-  res.render('index', {title: 'Contact Us', page: 'contact'});
+function DisplayContact(req, res, next) {
+  res.render("index", { title: "Contact Us", page: "contact" });
 }
 
-function DisplayServices(req, res, next)
-{
-  res.render('index', {title: 'Services', page: 'services'});
-}
-
+function DisplayServices(req, res, next) {}
 
 module.exports = {
- DisplayHome: DisplayHome,
- DisplayAbout: DisplayAbout,
- DisplayContact: DisplayContact,
- DisplayServices: DisplayServices
-}
-
-  
+  DisplayHome: DisplayHome,
+  DisplayAbout: DisplayAbout,
+  DisplayContact: DisplayContact,
+  DisplayServices: DisplayServices,
+};
