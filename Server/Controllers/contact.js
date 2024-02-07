@@ -33,7 +33,7 @@ const sendEmail = async (req, res, next) => {
       console.error(error);
     });
 
-  res.render("index", { title: "Home", page: "contactSent" });
+  res.render("index", { title: "Thank you", page: "contactSent" });
 };
 
 module.exports = {
