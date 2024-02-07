@@ -18,7 +18,9 @@ function DisplayContact(req, res, next) {
   res.render("index", { title: "Contact Us", page: "contact" });
 }
 
-function DisplayServices(req, res, next) {}
+function DisplayServices(req, res, next) {
+  res.render("index", { title: "Serices", page: "services" });
+}
 
 module.exports = {
   DisplayHome: DisplayHome,
