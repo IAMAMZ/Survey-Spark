@@ -35,5 +35,8 @@ router.get("/services", (req, res, next) => {
 router.post("/email", (req, res, next) => {
   ContactController.sendEmail(req, res, next);
 });
+router.use((req, res, next) => {
+  IndexController.DisplayNotFound(req, res, next);
+});
 
 module.exports = router;

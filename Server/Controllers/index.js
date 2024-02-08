@@ -21,10 +21,15 @@ function DisplayContact(req, res, next) {
 function DisplayServices(req, res, next) {
   res.render("index", { title: "Serices", page: "services" });
 }
+// match every other path here
+function DisplayNotFound(req, res, next) {
+  res.render("index", { title: "NotFound", page: "notFound" });
+}
 
 module.exports = {
   DisplayHome: DisplayHome,
   DisplayAbout: DisplayAbout,
   DisplayContact: DisplayContact,
   DisplayServices: DisplayServices,
+  DisplayNotFound: DisplayNotFound,
 };

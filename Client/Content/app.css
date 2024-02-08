@@ -452,22 +452,24 @@ section {
 }
 .team{
     background-color: #4054ec;
+    
 }
 .team h2{
+    color: #ffffff;
     font-size: 3em;
     font-weight: bold;
-    color: #000000;
     text-align: center;
 }
 .team p{
     font-size: 2.1em;
     font-weight: 500;
-    color: #000000;
+    margin-bottom: 50px;
     text-align: center;
+    color: #ffffff;
 }
 .team ul li{
     font-size: 1.5em; /* Set the font size for list items */
-    color: #333; /* Set the font color for list items */
+    color: #ffffff;
     margin-top: 15px; /* Add margin above each list item */
     margin-bottom: 15px; /* Add margin below each list item */
 }
@@ -479,6 +481,7 @@ section {
     border: 1px solid #e3e3e3;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    margin-bottom: 30px;
 }
 .contact-form h2 {
     margin-bottom: 15px;
@@ -520,6 +523,7 @@ section {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 50px;
     padding: 40px 0;
     background-color: #f9f9f9;
 }
@@ -575,4 +579,11 @@ section {
 
 .cta-button:hover {
     background-color: #0056b3;
+}
+
+/* error template*/
+
+.error-template{
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
