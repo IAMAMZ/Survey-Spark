@@ -5,30 +5,6 @@ let surveyIndex = async (req, res, next) => {
   console.log("survey controller fired");
   // fetch all media docs
   try {
-    const newSurvey = new Survey({
-      title: "Customer Feedback",
-      description: "Tell us about your experience",
-      questions: [
-        {
-          questionId: "q1",
-          text: "How satisfied are you with our service?",
-          type: "rating",
-          options: [],
-          showIf: null,
-        },
-        {
-          questionId: "q2",
-          text: "Would you recommend us to a friend?",
-          type: "multiple-choice",
-          options: [
-            { text: "Yes", value: "yes" },
-            { text: "No", value: "no" },
-          ],
-          showIf: null,
-        },
-      ],
-    });
-    await newSurvey.save();
     const surveyCollection = await Survey.find(); // Use await to wait for the promise to resolve
     console.log(surveyCollection); // This should now log the actual documents found
 
