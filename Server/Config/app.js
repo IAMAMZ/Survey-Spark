@@ -7,10 +7,21 @@ const logger = require("morgan");
 const dotenv = require("dotenv");
 const Survey = require("../Models/Survery.js");
 const Response = require("../Models/Response.js");
-
+const mongoose = require("mongoose");
 // configure the dotenv
 dotenv.config();
+
 const hbs = require("hbs");
+
+const dbConfig = require("../Config/db.js");
+
+// connect to the database
+mongoose
+  .connect(dbConfig.DB_URI)
+  .then(() => {
+    console.log("Connected to MongoDb");
+  })
+  .catch((err) => console.err("Could not connect to MongoDb", err));
 
 // Routing modules
 const indexRouter = require("../Routes");
