@@ -5,7 +5,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const dotenv = require("dotenv");
-const Survey = require("../Models/Survery.js");
+const Survey = require("../Models/Survey.js");
 const Response = require("../Models/Response.js");
 const mongoose = require("mongoose");
 // configure the dotenv
@@ -24,7 +24,8 @@ mongoose
   .catch((err) => console.err("Could not connect to MongoDb", err));
 
 // Routing modules
-const indexRouter = require("../Routes");
+const indexRouter = require("../Routes/index.js");
+const surveyRouter = require("../Routes/survey.js");
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
+app.use("/survey", surveyRouter);
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
