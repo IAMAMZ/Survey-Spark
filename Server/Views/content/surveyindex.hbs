@@ -1,27 +1,28 @@
 
-    <h1>Survey Index</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
     {{#each Survey}}
-        <div class="survey">
-            <h2>{{title}}</h2>
-            <p>{{description}}</p>
-            <div class="questions">
-                {{#each questions}}
-                    <div class="question">
-                        <h3>{{text}}</h3>
-                        {{#if options}}
-                            <ul>
-                                {{#each options}}
-                                    <li>{{text}} (Value: {{value}})</li>
-                                {{/each}}
-                            </ul>
-                        {{/if}}
-                        {{#if showIf}}
-                            <p>Show if: {{showIf}}</p>
-                        {{/if}}
-                    </div>
-                {{/each}}
-            </div>
-        </div>
+      <tr>
+        <th scope="row">{{@index}}</th>
+        <td>{{title}}</td>
+        <td>{{description}}</td>
+        <td>
+          <button type="button" class="btn btn-primary">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
     {{else}}
-        <p>No surveys found.</p>
+      <tr>
+        <td colspan="4">No surveys found.</td>
+      </tr>
     {{/each}}
+  </tbody>
+</table>
