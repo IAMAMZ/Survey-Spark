@@ -4,9 +4,12 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const dotenv = require("dotenv");
 const Survey = require("../Models/Survery.js");
 const Response = require("../Models/Response.js");
 
+// configure the dotenv
+dotenv.config();
 const hbs = require("hbs");
 
 // Routing modules
