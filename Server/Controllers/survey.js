@@ -2,7 +2,6 @@
 const Survey = require("../Models/Survey");
 
 let surveyIndex = async (req, res, next) => {
-  console.log("survey controller fired");
   // fetch all media docs
   try {
     const surveyCollection = await Survey.find();
@@ -20,7 +19,10 @@ let surveyIndex = async (req, res, next) => {
 };
 
 let displayCreateForm = (req, res, next) => {
-  res.render("survey/create", { title: "Add New Survey" });
+  res.render("index", {
+    title: "Survey Index",
+    page: "surveyCreate",
+  });
 };
 
 let createSurvey = async (req, res, next) => {
@@ -51,4 +53,5 @@ let updateSurvey = async (req, res, next) => {
 
 module.exports = {
   surveyIndex,
+  displayCreateForm,
 };

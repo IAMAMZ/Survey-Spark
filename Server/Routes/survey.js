@@ -4,8 +4,10 @@ const router = express.Router();
 
 const surveyController = require("../Controllers/survey");
 
+router.get("/create", (req, res, next) => {
+  surveyController.displayCreateForm(req, res, next);
+});
 router.get("/", (req, res, next) => {
-  console.log("routes fired for survey");
   surveyController.surveyIndex(req, res, next);
 });
 
