@@ -1,7 +1,7 @@
 /*
 The survey collection will have 3 schemas nested.
 
-each survery will have many questions each question belongs to one and only one survey
+each survey will have many questions each question belongs to one and only one survey
 
 options and questions are one to one
 */
@@ -27,6 +27,6 @@ const surveySchema = new Schema({
   title: String,
   description: String,
   questions: [questionSchema],
-});
+}, { collection: 'Surveys' });
 
 module.exports = mongoose.model("Survey", surveySchema);
