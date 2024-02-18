@@ -11,4 +11,9 @@ router.get(
 
 router.post("/:surveyId/questions/add", questionController.saveSurveyQuestion);
 
+router.get(
+  "/:surveyId/questions/:questionId/delete",
+  questionController.deleteQuestion
+);
+
 module.exports = router;

@@ -52,7 +52,35 @@ const saveSurveyQuestion = async (req, res, next) => {
   }
 };
 
+const deleteQuestion = async (req, res, next) => {
+  try {
+    // Find the survey by ID
+    let survey = await Survey.findById(req.params.surveyId);
+
+    // If the survey doesn't exist, return 404
+    if (!survey) {
+      return res.status(404).send("Survey not found");
+    }
+
+    // Remove the question from the survey's questions array
+    // Filter out the question to delete by its ID
+    survey.questions = survey.questions.filter(
+      (question) => question._id.toString() !== req.params.questionId
+    );
+
+    // Save the updated survey
+    await survey.save();
+
+    // Redirect back to the survey details page,
+    res.redirect(`/survey/details/${req.params.surveyId}`);
+  } catch (error) {
+    console.error("Error deleting question:", error);
+    res.status(500).send("Error deleting the question");
+  }
+};
+
 module.exports = {
   displayQuestionCreateForm,
   saveSurveyQuestion,
+  deleteQuestion,
 };
