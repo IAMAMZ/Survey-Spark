@@ -1,6 +1,6 @@
 <div class="container mt-5">
         <h2>Add New Question to Survey</h2>
-        <form action="/survey/{{surveyId}}/questions/add" method="POST" class="mt-3">
+        <form action="/survey/{{survey._id}}/questions/add" method="POST" class="mt-3">
             <div class="form-group">
                 <label for="text">Question Text</label>
                 <input type="text" class="form-control" id="text" name="text" required>
