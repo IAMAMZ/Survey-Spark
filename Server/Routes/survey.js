@@ -14,5 +14,8 @@ router.post("/create", (req, res, next) => {
 router.get("/", (req, res, next) => {
   surveyController.surveyIndex(req, res, next);
 });
+router.get("/delete/:_id", (req, res, next) => {
+  surveyController.deleteSurvey(req, res, next);
+});
 
 module.exports = router;

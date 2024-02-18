@@ -18,8 +18,8 @@
         <td>{{title}}</td>
         <td>{{description}}</td>
         <td>
-          <button type="button" class="btn btn-primary">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <a href="/survey/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+          <a href="/survey/delete/{{this._id}}"  class="btn btn-danger">Delete</a>
         </td>
       </tr>
     {{else}}
