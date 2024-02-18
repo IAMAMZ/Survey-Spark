@@ -53,6 +53,7 @@ let displayEditForm = async (req, res, next) => {
 };
 
 let updateSurvey = async (req, res, next) => {
+  console.log(req.params._id);
   await Survey.findByIdAndUpdate(req.params._id, req.body);
   res.redirect("/survey");
 };
@@ -62,4 +63,6 @@ module.exports = {
   displayCreateForm,
   createSurvey,
   deleteSurvey,
+  displayEditForm,
+  updateSurvey,
 };
