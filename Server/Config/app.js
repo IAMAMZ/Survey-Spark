@@ -28,6 +28,7 @@ mongoose
 // Routing modules
 const indexRouter = require("../Routes/index.js");
 const surveyRouter = require("../Routes/survey.js");
+const questionRouter = require("../Routes/question.js");
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
 app.use("/survey", surveyRouter);
+app.use("/survey", questionRouter);
 app.use("/", indexRouter);
 hbs.registerHelper("selectOption", (currentValue, selectedValue) => {
   let selectedProperty = "";
