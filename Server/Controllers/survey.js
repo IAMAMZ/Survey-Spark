@@ -5,9 +5,7 @@ let surveyIndex = async (req, res, next) => {
   // fetch all media docs
   try {
     const surveyCollection = await Survey.find();
-    console.log(surveyCollection);
-
-    res.render("index", {
+    res.render("survey/surveyindex", {
       title: "Survey Index",
       page: "surveyindex",
       Survey: surveyCollection,
@@ -19,16 +17,26 @@ let surveyIndex = async (req, res, next) => {
 };
 
 let displayCreateForm = (req, res, next) => {
-  res.render("index", {
+  res.render("survey/surveyCreate", {
     title: "Survey Index",
     page: "surveyCreate",
   });
 };
 
 let createSurvey = async (req, res, next) => {
-  await Survey.create(req.body);
-
-  res.redirect("/survey");
+  console.log("Create post run");
+  try {
+    const { title, description } = req.body;
+    const newSurvey = new Survey({
+      title,
+      description,
+    });
+    await newSurvey.save();
+    res.redirect("/survey"); // Adjust the redirect as needed
+  } catch (error) {
+    console.error("Failed to create survey:", error);
+    res.status(500).send("Error creating the survey");
+  }
 };
 
 let deleteSurvey = async (req, res, next) => {
@@ -54,4 +62,5 @@ let updateSurvey = async (req, res, next) => {
 module.exports = {
   surveyIndex,
   displayCreateForm,
+  createSurvey,
 };
