@@ -32,8 +32,10 @@ const sendEmail = async (req, res, next) => {
     .catch((error) => {
       console.error(error);
     });
-
-  res.render("index", { title: "Thank you", page: "contactSent" });
+  res.render("content/contactSent", {
+    title: "Thank you",
+    page: "contactSent",
+  });
 };
 
 module.exports = {
