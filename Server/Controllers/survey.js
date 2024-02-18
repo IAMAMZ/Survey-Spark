@@ -23,6 +23,7 @@ let displayCreateForm = (req, res, next) => {
 };
 
 let createSurvey = async (req, res, next) => {
+  console.log("create run");
   try {
     const { title, description } = req.body;
     const newSurvey = new Survey({
@@ -30,7 +31,7 @@ let createSurvey = async (req, res, next) => {
       description,
     });
     await newSurvey.save();
-    res.redirect("/survey"); // Adjust the redirect as needed
+    res.redirect("/survey");
   } catch (error) {
     console.error("Failed to create survey:", error);
     res.status(500).send("Error creating the survey");
@@ -58,6 +59,15 @@ let updateSurvey = async (req, res, next) => {
   res.redirect("/survey");
 };
 
+let surveyDetails = async (req, res, next) => {
+  console.log(req.params._id);
+  let survey = await Survey.findById(req.params._id);
+  res.render("survey/details", {
+    title: `${survey.title} Details`,
+    survey: survey,
+  });
+};
+
 module.exports = {
   surveyIndex,
   displayCreateForm,
@@ -65,4 +75,5 @@ module.exports = {
   deleteSurvey,
   displayEditForm,
   updateSurvey,
+  surveyDetails,
 };

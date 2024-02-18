@@ -11,9 +11,7 @@ router.get("/create", (req, res, next) => {
 router.post("/create", (req, res, next) => {
   surveyController.createSurvey(req, res, next);
 });
-router.get("/", (req, res, next) => {
-  surveyController.surveyIndex(req, res, next);
-});
+
 router.get("/delete/:_id", (req, res, next) => {
   surveyController.deleteSurvey(req, res, next);
 });
@@ -22,6 +20,12 @@ router.get("/edit/:_id", (req, res, next) => {
 });
 router.post("/edit/:_id", (req, res, next) => {
   surveyController.updateSurvey(req, res, next);
+});
+router.get("/details/:_id", (req, res, next) => {
+  surveyController.surveyDetails(req, res, next);
+});
+router.get("/", (req, res, next) => {
+  surveyController.surveyIndex(req, res, next);
 });
 
 module.exports = router;
