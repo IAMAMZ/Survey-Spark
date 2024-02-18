@@ -6,24 +6,25 @@
  * @param {Response} res
  * @param {NextFunction} next
  */
+
 function DisplayHome(req, res, next) {
-  res.render("index", { title: "Home", page: "home" });
+  res.render("content/home", { title: "Home", page: "home" });
 }
 
 function DisplayAbout(req, res, next) {
-  res.render("index", { title: "About Us", page: "about" });
+  res.render("content/about", { title: "About Us", page: "about" });
 }
 
 function DisplayContact(req, res, next) {
-  res.render("index", { title: "Contact Us", page: "contact" });
+  res.render("content/contact", { title: "Contact Us", page: "contact" });
 }
 
 function DisplayServices(req, res, next) {
-  res.render("index", { title: "Serices", page: "services" });
+  res.render("content/services", { title: "Services", page: "services" });
 }
 // match every other path here
 function DisplayNotFound(req, res, next) {
-  res.render("index", { title: "NotFound", page: "notFound" });
+  res.render("content/notFound", { title: "NotFound", page: "notFound" });
 }
 
 module.exports = {

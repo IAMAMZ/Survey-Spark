@@ -1,0 +1,15 @@
+  <div class="container mt-5">
+        <h1 class="mb-4">Create New Survey</h1>
+        <form  method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" value="{{survey.title}}" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control"  id="description" name="description" rows="3" required>
+                    {{survey.description}}
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>

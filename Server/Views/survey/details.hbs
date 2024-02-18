@@ -1,0 +1,26 @@
+  <div class="container mt-5">
+        <h1>{{survey.title}}</h1>
+        <p>{{survey.description}}</p>
+        <a href="/survey/{{survey._id}}/questions/add" class="btn btn-primary mb-3">Add Question</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each survey.questions}}
+                <tr>
+                    <td>{{text}}</td>
+                    <td>{{type}}</td>
+                    <td>
+                        <a href="/survey/{{../survey._id}}/questions/{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="/survey/{{../survey._id}}/questions/{{_id}}/delete" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>

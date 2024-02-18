@@ -4,13 +4,31 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const Survey = require("../Models/Survery.js");
+const dotenv = require("dotenv");
+const Survey = require("../Models/Survey.js");
 const Response = require("../Models/Response.js");
+const mongoose = require("mongoose");
+
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const hbs = require("hbs");
 
+const dbConfig = require("../Config/db.js");
+
+// connect to the database
+mongoose
+  .connect(dbConfig.DB_URI)
+  .then(() => {
+    console.log("Connected to MongoDb");
+  })
+  .catch((err) => console.err("Could not connect to MongoDb", err));
+
 // Routing modules
-const indexRouter = require("../Routes");
+const indexRouter = require("../Routes/index.js");
+const surveyRouter = require("../Routes/survey.js");
+const questionRouter = require("../Routes/question.js");
 
 const app = express();
 
@@ -19,13 +37,13 @@ app.set("views", path.join(__dirname, "../Views"));
 app.set("view engine", "hbs");
 
 // register hbs helpers
-hbs.registerPartials(path.join(__dirname, "../Views/components/"));
-hbs.registerPartials(path.join(__dirname, "../Views/content/"));
+// hbs.registerPartials(path.join(__dirname, "../Views/components/"));
+// hbs.registerPartials(path.join(__dirname, "../Views/content/"));
 
-hbs.registerHelper("loadPage", function (pageName) {
-  console.log("pageName: " + pageName);
-  return pageName;
-});
+// hbs.registerHelper("loadPage", function (pageName) {
+//   console.log("pageName: " + pageName);
+//   return pageName;
+// });
 
 // middleware configuration
 app.use(logger("dev"));
@@ -35,7 +53,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
+app.use("/survey", surveyRouter);
+app.use("/survey", questionRouter);
 app.use("/", indexRouter);
+hbs.registerHelper("selectOption", (currentValue, selectedValue) => {
+  let selectedProperty = "";
+
+  if (currentValue === selectedValue) {
+    selectedProperty = " selected";
+  }
+
+  return new hbs.SafeString(
+    `<option${selectedProperty}>${currentValue}</option>`
+  );
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
