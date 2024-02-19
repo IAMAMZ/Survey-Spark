@@ -1,0 +1,343 @@
+/*surveyIndex*/
+/* Styles for the survey index page */
+body {
+    padding: 20px;
+}
+
+h1 {
+    color: #000;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.mb-3 {
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mb-3 a {
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 15px;
+    margin: 0;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.mb-3 a:hover {
+    text-decoration: underline;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #217dbb;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+    filter: brightness(85%);
+}
+
+/* Media Query for Responsive Table */
+@media (max-width: 768px) {
+    .table {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+.table tbody {
+    font-family: 'Arial', sans-serif;
+}
+
+td a {
+    color: #3498db;
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+td:nth-child(3) {
+    padding: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+td:last-child a {
+    margin-right: 5px;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+/*end of surveyIndex*/
+
+/*surveyCreate*/
+/* Styles for the survey create page */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #217dbb;
+}
+
+form button.btn-primary {
+    width: 100%;
+}
+
+form {
+    margin-bottom: 20px;
+}
+/*end of surveyCreate*/
+
+/*edit*/
+/* Styles for the edit page */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #3498db;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #217dbb;
+}
+
+form {
+    margin-bottom: 20px;
+}
+/*end of edit*/
+
+/* details */
+/* Styles for the details page */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.btn btn-primary mb-3 {
+    align-items: center;
+}
+
+.btn-primary:hover {
+    background-color: #217dbb;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+}
+
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn-secondary,
+.btn-danger {
+    margin-right: 5px;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+}
+/*end of details*/
+
+/*create*/
+h2{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/*end of create*/
