@@ -1,4 +1,5 @@
 /*surveyIndex*/
+/* Styles for the survey index page */
 body {
     padding: 20px;
 }
@@ -11,12 +12,14 @@ h1 {
     padding: 0;
     text-align: center;
 }
-.mb-3{
+
+.mb-3 {
     color: #000;
     text-align: center;
     margin-bottom: 20px;
 }
-.mb-3 a{
+
+.mb-3 a {
     font-size: 25px;
     font-weight: bold;
     padding-top: 15px;
@@ -29,7 +32,7 @@ h1 {
     text-decoration: underline;
 }
 
-.table{
+.table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -47,7 +50,6 @@ h1 {
     background-color: #217dbb;
 }
 
-
 .btn-primary:hover,
 .btn-danger:hover {
     filter: brightness(85%);
@@ -60,6 +62,7 @@ h1 {
         display: block;
     }
 }
+
 .table tbody {
     font-family: 'Arial', sans-serif;
 }
@@ -77,7 +80,6 @@ td:nth-child(3) {
     font-weight: bold;
 }
 
-
 td:last-child a {
     margin-right: 5px;
     text-decoration: none;
@@ -87,14 +89,15 @@ td:last-child a {
 /*end of surveyIndex*/
 
 /*surveyCreate*/
+/* Styles for the survey create page */
 .container {
     max-width: 600px;
     margin: auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #fff; 
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); 
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -137,16 +140,16 @@ label {
 }
 
 form button.btn-primary {
-    width: 100%; 
+    width: 100%;
 }
-  
+
 form {
     margin-bottom: 20px;
 }
-
 /*end of surveyCreate*/
 
 /*edit*/
+/* Styles for the edit page */
 .container {
     max-width: 600px;
     margin: auto;
@@ -212,19 +215,21 @@ textarea:focus {
 form {
     margin-bottom: 20px;
 }
-
 /*end of edit*/
 
 /* details */
+/* Styles for the details page */
 .container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
 }
-h1{
+
+h1 {
     color: #333;
 }
-p{
+
+p {
     color: #555;
     margin-bottom: 20px;
     font-size: 20px;
@@ -240,7 +245,7 @@ p{
     display: inline-block;
 }
 
-.btn btn-primary mb-3{
+.btn btn-primary mb-3 {
     align-items: center;
 }
 
@@ -266,18 +271,12 @@ p{
     font-weight: bold;
 }
 
-.btn-secondary, .btn-danger {
+.btn-secondary,
+.btn-danger {
     margin-right: 5px;
     text-decoration: none;
     padding: 6px 12px;
     border-radius: 4px;
     display: inline-block;
 }
-
 /*end of details*/
-
-
-
-
-
-  
