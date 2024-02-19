@@ -1,0 +1,17 @@
+<h1>Survey Library</h1>
+<a href="/survey/create">Create new survey</a>
+<ul class="row card-group">
+    {{#each survey}}
+        <li class="card m-4 text-center col-lg-4">
+            <h5>{{this.title}}</h5>
+            <h6>{{this.description}}</h6>
+            <a href="/survey/edit/{{this._id}}" class="btn btn-primary">
+                Edit
+            </a>
+            <a href="/survey/delete/{{this._id}}" class="btn btn-primary"
+                onclick="return confirm('Are you sure you want to delete this survey?');">
+                Delete
+            </a>
+        </li>
+    {{/each}}
+</ul>
