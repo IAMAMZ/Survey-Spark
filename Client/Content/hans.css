@@ -280,3 +280,15 @@ p {
     display: inline-block;
 }
 /*end of details*/
+
+/*create*/
+h2{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/*end of create*/
