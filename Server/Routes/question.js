@@ -16,4 +16,7 @@ router.get(
   questionController.deleteQuestion
 );
 
+router.get("/:surveyId/questions/:questionId/edit", questionController.displayQuestionEditForm);
+router.post("/:surveyId/questions/:questionId/edit", questionController.updateSurveyQuestion);
+
 module.exports = router;
