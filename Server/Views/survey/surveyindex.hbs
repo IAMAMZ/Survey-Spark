@@ -1,34 +1,38 @@
-<h1>Survey Index</h1>
-<div class="mb-3">
-    <a class="btn" href="/survey/create">Add Survey</a>
+<div class="container mt-5">
+    <h1 class="mb-3">Survey Index</h1>
+    <div class="text-end mb-3">
+        <a class="btn btn-primary" href="/survey/create">Add Survey</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table survey-index table-hover align-middle custom-blue-table">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Survey}}
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td><a href="/survey/details/{{this._id}}" class="link-primary">{{title}}</a></td>
+                    <td>{{description}}</td>
+                    <td>
+                        <a href="/survey/edit/{{this._id}}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                        <button class="btn btn-sm btn-outline-danger" onclick="confirmDelete('{{this._id}}')">Delete</button>
+                    </td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="4">No surveys found.</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each Survey}}
-        <tr>
-            <th scope="row">{{@index}}</th>
-            <td><a href="/survey/details/{{this._id}}">{{title}}</a></td>
-            <td>{{description}}</td>
-            <td>
-                <a href="/survey/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger" onclick="confirmDelete('{{this._id}}')">Delete</a>
-            </td>
-        </tr>
-        {{else}}
-        <tr>
-            <td colspan="4">No surveys found.</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
 
 <script>
     function confirmDelete(surveyId) {
