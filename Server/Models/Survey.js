@@ -17,15 +17,21 @@ const optionSchema = new Schema({
 const questionSchema = new Schema({
   questionId: String,
   text: String,
-  type: { type: String, enum: ["multiple-choice", "text", "rating"] },
+  type: {
+    type: String,
+    enum: ["Multiple Choice", "Short Answer", "Rating Scale"],
+  },
   options: [optionSchema],
   showIf: Schema.Types.Mixed, // you can add any condtion to have the show if
 });
 
-const surveySchema = new Schema({
-  title: String,
-  description: String,
-  questions: [questionSchema],
-}, { collection: 'Surveys' });
+const surveySchema = new Schema(
+  {
+    title: String,
+    description: String,
+    questions: [questionSchema],
+  },
+  { collection: "Surveys" }
+);
 
 module.exports = mongoose.model("Surveys", surveySchema);
