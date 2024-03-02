@@ -1,37 +1,14 @@
-/*
-The survey collection will have 3 schemas nested.
-
-each survey will have many questions each question belongs to one and only one survey
-
-options and questions are one to many
-*/
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-const optionSchema = new Schema({
-  text: String,
-  value: String,
-});
-
-const questionSchema = new Schema({
-  questionId: String,
-  text: String,
-  type: {
-    type: String,
-    enum: ["Multiple Choice", "Short Answer", "Rating Scale"],
-  },
-  options: [optionSchema],
-  showIf: Schema.Types.Mixed, // you can add any condtion to have the show if
-});
 
 const surveySchema = new Schema(
   {
     title: String,
     description: String,
-    questions: [questionSchema],
+    owner: { type: Schema.Types.ObjectId, ref: "User" }, // this is for future when we add authentication
+    sections: [{ type: Schema.Types.ObjectId, ref: "Section" }],
   },
   { collection: "Surveys" }
 );
 
-module.exports = mongoose.model("Surveys", surveySchema);
+module.exports = mongoose.model("Survey", surveySchema);
