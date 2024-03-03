@@ -1,5 +1,6 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
+const Question = require("../Models/Question");
 
 const sectionController = {
   displaySectionsInSurvey: async (req, res) => {
@@ -18,6 +19,25 @@ const sectionController = {
       res.status(500).send(error.toString());
     }
   },
+  displayQuestionPortal: async (req, res) => {
+    const { sectionId } = req.params;
+    try {
+      const section = await Section.findById(sectionId)
+        .populate("questions")
+        .exec();
+      if (!section) {
+        return res.status(404).send("Survey not found");
+      }
+
+      res.render("section/questionPortal", {
+        section: section,
+        questions: section.questions,
+      });
+    } catch (error) {
+      res.status(500).send(error.toString());
+    }
+  },
+
   displaySectionCreateForm: async (req, res) => {
     const { surveyId } = req.params;
     try {
@@ -37,7 +57,7 @@ const sectionController = {
   },
 
   // Save a new section to a survey
-  saveSurveyQuestion: async (req, res) => {
+  saveSurveySection: async (req, res) => {
     const { surveyId } = req.params;
     const { title, description, nextSection } = req.body;
 

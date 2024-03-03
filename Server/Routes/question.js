@@ -5,18 +5,27 @@ const router = express.Router();
 const questionController = require("../Controllers/question");
 
 router.get(
-  "/:surveyId/questions/add",
+  "/:surveyId/sections/:sectionId/questions/add",
   questionController.displayQuestionCreateForm
 );
 
-router.post("/:surveyId/questions/add", questionController.saveSurveyQuestion);
+router.post(
+  "/:surveyId/sections/:sectionId/questions/add",
+  questionController.saveSurveyQuestion
+);
 
 router.get(
-  "/:surveyId/questions/:questionId/delete",
+  "/:surveyId/sections/:sectionId/questions/delete",
   questionController.deleteQuestion
 );
 
-router.get("/:surveyId/questions/:questionId/edit", questionController.displayQuestionEditForm);
-router.post("/:surveyId/questions/:questionId/edit", questionController.updateSurveyQuestion);
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/edit",
+  questionController.displayQuestionEditForm
+);
+router.post(
+  "/:surveyId/sections/:sectionId/questions/:questionId/edit",
+  questionController.updateSurveyQuestion
+);
 
 module.exports = router;

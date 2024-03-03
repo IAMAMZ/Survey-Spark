@@ -17,7 +17,7 @@
                 {{#each Survey}}
                 <tr>
                     <th scope="row">{{@index}}</th>
-                    <td><a href="/survey/details/{{this._id}}" class="link-primary">{{title}}</a></td>
+                    <td><a href="/survey/{{this._id}}/sections" class="link-primary">{{title}}</a></td>
                     <td>{{description}}</td>
                     <td>
                         <a href="/survey/edit/{{this._id}}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
