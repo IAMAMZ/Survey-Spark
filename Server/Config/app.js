@@ -69,7 +69,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
-app.use("/survey/sections", sectionRouter);
+app.use("/survey", sectionRouter);
 app.use("/survey", surveyRouter);
 app.use("/survey", questionRouter);
 
