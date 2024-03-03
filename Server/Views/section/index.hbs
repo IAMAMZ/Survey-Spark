@@ -1,0 +1,27 @@
+
+    <div class="container mt-5">
+        <h1>Sections of {{survey.title}}</h1>
+
+        {{#if sections.length}}
+            <div class="list-group mt-3">
+                {{#each sections}}
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{this.order}}. {{this.title}}</h5>
+                            <small>
+                                <a href="/{{../survey._id}}/sections/{{this._id}}/edit" class="badge badge-primary">Edit</a>
+                                <a href="/{{../survey._id}}/sections/{{this._id}}/delete" class="badge badge-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                            </small>
+                        </div>
+                        <p class="mb-1">{{this.description}}</p>
+                    </a>
+                {{/each}}
+            </div>
+        {{else}}
+            <p class="mt-3">No sections have been added yet.</p>
+        {{/if}}
+
+        <a href="/{{survey._id}}/sections/add" class="btn btn-success mt-3">Add New Section</a>
+    </div>
+
+
