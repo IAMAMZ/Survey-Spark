@@ -1,51 +1,49 @@
 // get the survey model
 const Survey = require("../Models/Survey");
+const Section = require("../Models/Section");
+const Question = require("../Models/Question");
 
 const displayQuestionCreateForm = async (req, res, next) => {
-  let survey = await Survey.findById(req.params.surveyId);
   res.render("question/create", {
     title: "Add Question",
     page: "create",
-    survey: survey,
+    surveyId: req.params.surveyId,
   });
 };
 
 const saveSurveyQuestion = async (req, res, next) => {
   try {
-    // Find the survey by ID
-    let survey = await Survey.findById(req.params.surveyId);
+    // Find the section by ID
+    let section = await Section.findById(req.params.sectionId);
 
-    // if it doesn't exist return 404
-    if (!survey) {
-      return res.status(404).send("Survey not found");
+    // If the section doesn't exist, return 404
+    if (!section) {
+      return res.status(404).send("Section not found");
     }
 
     // Extract question details from request body
-    const { text, type, options } = req.body;
+    const { text, type } = req.body;
 
-    // create a  new question object
-    let newQuestion = {
+    // Create a new Question document
+    let newQuestion = new Question({
       text: text,
       type: type,
-      options: [],
-    };
+      // Add other fields as necessary
+    });
 
-    // If the question type is 'multiple-choice', parse the options --> we could handle options some other way, it's csv for now
-    if (type === "multiple-choice" && options) {
-      newQuestion.options = options.split(",").map((option) => ({
-        text: option.trim(), // Create an option object for each option
-        value: option.trim(),
-      }));
-    }
+    // Save the Question document to get an ObjectId
+    let savedQuestion = await newQuestion.save();
 
-    // Add the new question to the survey's questions array
-    survey.questions.push(newQuestion);
+    // Add the ObjectId of the new Question to the Section's questions array
+    section.questions.push(savedQuestion._id);
 
-    // Save the updated survey
-    await survey.save();
+    // Save the updated Section
+    await section.save();
 
-    // Redirect to the survey details page and pass the survey id
-    res.redirect(`/survey/details/${survey._id}`);
+    // Redirect to the survey details page
+    res.redirect(
+      `/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`
+    );
   } catch (error) {
     console.error("Error saving new question:", error);
     res.status(500).send("Error saving new question");
@@ -78,7 +76,6 @@ const deleteQuestion = async (req, res, next) => {
     res.status(500).send("Error deleting the question");
   }
 };
-
 
 const updateSurveyQuestion = async (req, res, next) => {
   try {
@@ -132,14 +129,16 @@ const updateSurveyQuestion = async (req, res, next) => {
 const displayQuestionEditForm = async (req, res, next) => {
   // Retrieve the survey and question details
   let survey = await Survey.findById(req.params.surveyId);
-  let question = survey.questions.find(q => q._id.toString() === req.params.questionId);
+  let question = survey.questions.find(
+    (q) => q._id.toString() === req.params.questionId
+  );
 
   // Render the edit question form
   res.render("question/edit", {
     title: "Edit Question",
     page: "edit",
     survey: survey,
-    question: question
+    question: question,
   });
 };
 

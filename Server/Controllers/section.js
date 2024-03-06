@@ -20,13 +20,16 @@ const sectionController = {
     }
   },
   displayQuestionPortal: async (req, res) => {
+    console.log("FIREEEEE");
     const { sectionId } = req.params;
     try {
       const section = await Section.findById(sectionId)
         .populate("questions")
         .exec();
+
+      console.log("HERE IS MY SECTION QUETOAIFNAF " + section.questions);
       if (!section) {
-        return res.status(404).send("Survey not found");
+        return res.status(404).send("Section not found");
       }
 
       res.render("section/questionPortal", {

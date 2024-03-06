@@ -12,7 +12,6 @@ const questionSchema = new Schema({
   text: String,
   type: {
     type: String,
-    enum: ["Multiple Choice", "Short Answer"],
   },
   options: [optionSchema],
 });
