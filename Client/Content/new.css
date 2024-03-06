@@ -92,3 +92,30 @@
         display: block;
     }
 }
+
+/* Homepage Responsiveness */
+
+@media screen and (max-width: 619px) {
+    .home-product-stats-container {
+        flex-direction: column !important;
+    }
+    .home-product-stat {
+        width: 100%;
+    }
+    .home-masthead-container h1 {
+        font-size: 3em !important;
+    }
+}
+
+@media screen and (max-width: 693px)
+{
+    .home-features-item .home-features-item-row {
+        flex-basis: 100%;
+    }
+    .home-features-item .home-features-item-row:last-child {
+        display: none;
+    }
+    .home-features-item {
+        padding: 6% !important;
+    }
+}
