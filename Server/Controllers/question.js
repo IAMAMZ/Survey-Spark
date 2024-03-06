@@ -142,9 +142,23 @@ const displayQuestionEditForm = async (req, res, next) => {
   });
 };
 const displayQuestionOptionsPortal = async (req, res, next) => {
-  console.log("Question OPTIONS CLICKSED");
+  const { surveyId, questionId } = req.params;
 
-  res.render("question/option/index");
+  console.log(surveyId);
+  //get all the options
+
+  const question = await Question.findById(questionId);
+  const options = question.option;
+
+  // get the sections in the survey
+
+  const surveySections = await Survey.findById(surveyId).populate("sections");
+
+  res.render("question/option/index", {
+    question: question,
+    options: options,
+    surveySections: surveySections.sections,
+  });
 };
 
 module.exports = {
