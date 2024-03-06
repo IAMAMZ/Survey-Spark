@@ -31,4 +31,8 @@ router.get(
   "/:surveyId/sections/:sectionId/questions/:questionId/options",
   questionController.displayQuestionOptionsPortal
 );
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
+  questionController.displayOptionCreateForm
+);
 module.exports = router;

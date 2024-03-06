@@ -152,15 +152,19 @@ const displayQuestionOptionsPortal = async (req, res, next) => {
 
   // get the sections in the survey
 
-  const surveySections = await Survey.findById(surveyId).populate("sections");
-
   res.render("question/option/index", {
     question: question,
     options: options,
+  });
+};
+const displayOptionCreateForm = async (req, res, next) => {
+  const { surveyId, questionId } = req.params;
+  const surveySections = await Survey.findById(surveyId).populate("sections");
+
+  res.render("question/option/create", {
     surveySections: surveySections.sections,
   });
 };
-
 module.exports = {
   displayQuestionCreateForm,
   saveSurveyQuestion,
@@ -168,4 +172,5 @@ module.exports = {
   updateSurveyQuestion,
   deleteQuestion,
   displayQuestionOptionsPortal,
+  displayOptionCreateForm,
 };
