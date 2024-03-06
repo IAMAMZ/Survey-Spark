@@ -105,6 +105,9 @@
     .home-masthead-container h1 {
         font-size: 3em !important;
     }
+    .contact-masthead h1, .about-page h1 {
+        font-size: 3em !important;
+    }
 }
 
 @media screen and (max-width: 693px)
@@ -118,4 +121,21 @@
     .home-features-item {
         padding: 6% !important;
     }
+}
+
+/* Contact Page */
+
+.contact-section {
+    background-color: #4054ec;
+    color: #ffffff;
+    text-align: center;
+    padding: 5% 3%;
+}
+.contact-section h1 {
+    font-weight: 600;
+    font-size: 4em;
+    padding: 30px 0;
+}
+.contact-section p {
+    font-size: 1.5em;
 }
