@@ -147,3 +147,20 @@
 .contact .col-md-6 {
     width: 100% !important;
 }
+
+/* Services Page */
+
+.services-section:first-child {
+    background-color: #4054ec !important;
+    color: #ffffff;
+    text-align: center;
+    padding: 5% 3%;
+}
+.services-section h1 {
+    font-weight: 600;
+    font-size: 4em;
+    padding: 30px 0;
+}
+.services-section p {
+    font-size: 1.5em;
+}
