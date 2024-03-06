@@ -139,3 +139,11 @@
 .contact-section p {
     font-size: 1.5em;
 }
+
+.contact .row {
+    width: 100% !important;
+}
+
+.contact .col-md-6 {
+    width: 100% !important;
+}
