@@ -141,6 +141,11 @@ const displayQuestionEditForm = async (req, res, next) => {
     question: question,
   });
 };
+const displayQuestionOptionsPortal = async (req, res, next) => {
+  console.log("Question OPTIONS CLICKSED");
+
+  res.render("question/option/index");
+};
 
 module.exports = {
   displayQuestionCreateForm,
@@ -148,4 +153,5 @@ module.exports = {
   displayQuestionEditForm,
   updateSurveyQuestion,
   deleteQuestion,
+  displayQuestionOptionsPortal,
 };

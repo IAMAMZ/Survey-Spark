@@ -27,5 +27,8 @@ router.post(
   "/:surveyId/sections/:sectionId/questions/:questionId/edit",
   questionController.updateSurveyQuestion
 );
-
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options",
+  questionController.displayQuestionOptionsPortal
+);
 module.exports = router;

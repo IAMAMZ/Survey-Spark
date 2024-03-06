@@ -33,6 +33,7 @@ const sectionController = {
       }
 
       res.render("section/questionPortal", {
+        surveyId: req.params.surveyId,
         section: section,
         questions: section.questions,
       });
