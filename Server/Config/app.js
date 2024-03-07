@@ -52,6 +52,18 @@ mongoose
 app.set("views", path.join(__dirname, "../Views"));
 app.set("view engine", "hbs");
 
+// this helper to compare the options
+hbs.registerHelper("ifCond", function (v1, operator, v2, options) {
+  switch (operator) {
+    case "===":
+      return v1 === v2 ? options.fn(this) : options.inverse(this);
+    case "!==":
+      return v1 !== v2 ? options.fn(this) : options.inverse(this);
+    // You can add more cases here if needed
+    default:
+      return options.inverse(this);
+  }
+});
 // register hbs helpers
 // hbs.registerPartials(path.join(__dirname, "../Views/components/"));
 // hbs.registerPartials(path.join(__dirname, "../Views/content/"));

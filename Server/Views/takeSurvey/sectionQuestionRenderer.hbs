@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2 class="mb-3">{{section.title}}</h2>
+    <p class="mb-4">{{section.description}}</p>
+
+    <form action="/somwhwereovertherainbow" method="POST">
+        {{#each section.questions}}
+            <div class="mb-3">
+                <p class="font-weight-bold">{{text}}</p>
+                {{#ifCond type '===' 'Multiple Choice'}}
+                    <div>
+                        {{#each options}}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="{{this.value}}" name="question_{{@../index}}" value="{{this.value}}">
+                                <label class="form-check-label" for="{{this.value}}">{{this.text}}</label>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/ifCond}}
+                {{#ifCond type '===' 'Short Answer'}}
+                    <input type="text" name="question_{{@index}}" class="form-control" placeholder="Your answer...">
+                {{/ifCond}}
+            </div>
+        {{/each}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -94,8 +94,8 @@ const sectionController = {
       survey.sections.push(savedSection._id);
       await survey.save();
 
-      // Redirect or respond as necessary
-      res.redirect(`/${surveyId}/sections`);
+      // Redirect
+      res.redirect(`/survey/${surveyId}/sections`);
     } catch (error) {
       console.error("Error saving the section:", error);
       res.status(500).send(error.toString());
