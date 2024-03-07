@@ -147,7 +147,10 @@ const displayQuestionOptionsPortal = async (req, res, next) => {
   console.log(surveyId);
   //get all the options
 
-  const question = await Question.findById(questionId);
+  const question = await Question.findById(questionId).populate({
+    path: "options.nextSection",
+    select: "title",
+  });
   const options = question.options;
 
   // get the sections in the survey
@@ -176,7 +179,7 @@ const saveOption = async (req, res, next) => {
       return res.status(404).send("Question not found");
     }
 
-    // Create a new option object based on your schema
+    // Create a new option object
     const newOption = { text, value, nextSection: nextSection || undefined };
 
     question.options.push(newOption);

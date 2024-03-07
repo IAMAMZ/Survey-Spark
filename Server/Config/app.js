@@ -30,7 +30,7 @@ const indexRouter = require("../Routes/index.js");
 const surveyRouter = require("../Routes/survey.js");
 const questionRouter = require("../Routes/question.js");
 const sectionRouter = require("../Routes/section.js");
-
+const takeSurveyRouter = require("../Routes/takeSurvey.js");
 const app = express();
 
 // link to .env file if not in production mode
@@ -72,6 +72,7 @@ app.use(express.static(path.join(__dirname, "../../node_modules")));
 app.use("/survey", sectionRouter);
 app.use("/survey", surveyRouter);
 app.use("/survey", questionRouter);
+app.use("/takeSurvey", takeSurveyRouter);
 
 app.use("/", indexRouter);
 hbs.registerHelper("selectOption", (currentValue, selectedValue) => {
