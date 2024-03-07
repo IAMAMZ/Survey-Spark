@@ -2,7 +2,7 @@
     <h2 class="mb-3">{{section.title}}</h2>
     <p class="mb-4">{{section.description}}</p>
 
-    <form action="/somwhwereovertherainbow" method="POST">
+    <form action="{{section._id}}/saveResponse" method="POST">
         {{#each section.questions}}
             <div class="mb-3">
                 <p class="font-weight-bold">{{text}}</p>

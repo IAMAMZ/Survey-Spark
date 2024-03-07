@@ -10,5 +10,10 @@ router.get(
   "/:surveyId/sections/:sectionId",
   takeSurveyController.displaySection
 );
+
+router.post(
+  "/:surveyId/sections/:sectionId/saveResponse",
+  takeSurveyController.handleResponse
+);
 router.get("/", takeSurveyController.allSurveys);
 module.exports = router;

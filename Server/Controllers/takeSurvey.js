@@ -54,8 +54,13 @@ const displaySection = async (req, res, next) => {
   });
 };
 
+const handleResponse = async (req, res, next) => {
+  console.log(req.body);
+};
+
 module.exports = {
   allSurveys,
   takeSurvey,
   displaySection,
+  handleResponse,
 };
