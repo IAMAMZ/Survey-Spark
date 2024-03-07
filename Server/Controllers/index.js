@@ -8,7 +8,8 @@
  */
 
 function DisplayHome(req, res, next) {
-  res.render("content/home", { title: "Home", page: "home" });
+  const currentYear = new Date().getFullYear();
+  res.render("content/home", { title: "Home", page: "home", currentYear: currentYear });
 }
 
 function DisplayAbout(req, res, next) {
