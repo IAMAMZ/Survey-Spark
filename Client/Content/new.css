@@ -62,15 +62,16 @@
     outline: 0;
     display: inline-block;
     padding: 8px;
-    color: white;
-    background-color: #000;
+    color: #ffffff;
+    background-color: #4054ec;
     text-align: center;
     cursor: pointer;
     width: 100%;
+    font-weight: 600;
 }
   
 .about-page .button:hover {
-    background-color: #555;
+    background-color: #2f47d2;
 }
 
 .about-page img {
