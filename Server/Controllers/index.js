@@ -31,11 +31,16 @@ function DisplayLogin(req, res, next) {
   res.render("content/login", { title: "Login", page: "login", noHeaderFooter: true });
 }
 
+function DisplayGetStarted(req, res, next) {
+  res.render("content/get-started", { title: "Get Started", page: "get-started", noHeaderFooter: true });
+}
+
 module.exports = {
   DisplayHome: DisplayHome,
   DisplayAbout: DisplayAbout,
   DisplayContact: DisplayContact,
   DisplayServices: DisplayServices,
   DisplayNotFound: DisplayNotFound,
-  DisplayLogin: DisplayLogin
+  DisplayLogin: DisplayLogin,
+  DisplayGetStarted: DisplayGetStarted
 };

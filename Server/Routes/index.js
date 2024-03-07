@@ -27,6 +27,9 @@ router.post("/email", ContactController.sendEmail);
 /* GET Login Page */
 router.get("/login", IndexController.DisplayLogin);
 
+/* GET Get Started Page */
+router.get("/get-started", IndexController.DisplayGetStarted);
+
 router.use((req, res, next) => {
   IndexController.DisplayNotFound(req, res, next);
 });
