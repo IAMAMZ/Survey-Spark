@@ -19,6 +19,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
     <link rel="icon" type="image/x-icon" href="/Assets/images/home-header-logo.svg">
 </head>
 <body>
+    {{#unless noHeaderFooter}}
     <header class="home-header">
         <div class="home-header-container">
             <div class="home-header-column">
@@ -46,9 +47,11 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </header>
+    {{/unless}}
     <main>
         {{{body}}}
     </main>
+    {{#unless noHeaderFooter}}
     <footer class="home-footer">
         <div class="home-footer-container">
             <div class="home-footer-row">
@@ -99,7 +102,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </footer>
-
+    {{/unless}}
     <!-- Script Section -->
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

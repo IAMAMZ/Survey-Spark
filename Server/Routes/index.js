@@ -24,6 +24,9 @@ router.get("/services", IndexController.DisplayServices);
 //POST /email
 router.post("/email", ContactController.sendEmail);
 
+/* GET Login Page */
+router.get("/login", IndexController.DisplayLogin);
+
 router.use((req, res, next) => {
   IndexController.DisplayNotFound(req, res, next);
 });

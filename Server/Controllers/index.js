@@ -27,10 +27,15 @@ function DisplayNotFound(req, res, next) {
   res.render("content/notFound", { title: "NotFound", page: "notFound" });
 }
 
+function DisplayLogin(req, res, next) {
+  res.render("content/login", { title: "Login", page: "login", noHeaderFooter: true });
+}
+
 module.exports = {
   DisplayHome: DisplayHome,
   DisplayAbout: DisplayAbout,
   DisplayContact: DisplayContact,
   DisplayServices: DisplayServices,
   DisplayNotFound: DisplayNotFound,
+  DisplayLogin: DisplayLogin
 };
