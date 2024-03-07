@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Define questionSchema first to avoid reference issues
 const optionSchema = new Schema({
   text: String,
   value: String,

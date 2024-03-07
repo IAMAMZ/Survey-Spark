@@ -148,7 +148,7 @@ const displayQuestionOptionsPortal = async (req, res, next) => {
   //get all the options
 
   const question = await Question.findById(questionId);
-  const options = question.option;
+  const options = question.options;
 
   // get the sections in the survey
 
@@ -165,6 +165,33 @@ const displayOptionCreateForm = async (req, res, next) => {
     surveySections: surveySections.sections,
   });
 };
+
+const saveOption = async (req, res, next) => {
+  try {
+    const { questionId } = req.params;
+    const { text, value, nextSection } = req.body;
+
+    const question = await Question.findById(questionId);
+    if (!question) {
+      return res.status(404).send("Question not found");
+    }
+
+    // Create a new option object based on your schema
+    const newOption = { text, value, nextSection: nextSection || undefined };
+
+    question.options.push(newOption);
+
+    await question.save();
+
+    // Redirect
+    res.redirect(
+      `/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questions/${req.params.questionId}/options`
+    );
+  } catch (error) {
+    console.error("Error saving option:", error);
+    res.status(500).send("Error saving option");
+  }
+};
 module.exports = {
   displayQuestionCreateForm,
   saveSurveyQuestion,
@@ -173,4 +200,5 @@ module.exports = {
   deleteQuestion,
   displayQuestionOptionsPortal,
   displayOptionCreateForm,
+  saveOption,
 };

@@ -35,4 +35,8 @@ router.get(
   "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
   questionController.displayOptionCreateForm
 );
+router.post(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
+  questionController.saveOption
+);
 module.exports = router;

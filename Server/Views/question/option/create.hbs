@@ -1,7 +1,7 @@
 <body>
     <div class="container mt-5">
         <h2>Add New Option</h2>
-        <form action="/survey/{{surveyId}}/questions/{{questionId}}/options/add" method="POST" class="mt-3">
+        <form  method="POST" class="mt-3">
             <div class="form-group">
                 <label for="optionText">Option Text</label>
                 <input type="text" class="form-control" id="optionText" name="text" placeholder="Enter option text" required>
@@ -22,6 +22,4 @@
             <button type="submit" class="btn btn-primary">Add Option</button>
         </form>
     </div>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
