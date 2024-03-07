@@ -265,3 +265,23 @@
         width: 90vw;
     }
 }
+
+/* Survey Index */
+
+/* .survey-index {
+    padding: 3% 0 !important;
+    margin: 0 !important;
+} */
+.survey-index-title {
+    color: #4054ec;
+    text-align: left;
+    padding: 3%;
+}
+.survey-index h1 {
+    font-weight: 600;
+    font-size: 4em;
+    padding: 30px 0;
+}
+.survey-index p {
+    font-size: 1.5em;
+}
