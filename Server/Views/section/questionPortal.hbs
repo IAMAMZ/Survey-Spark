@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <h1>{{section.title}}</h1>
     <p>{{section.description}}</p>
-    <a href="/survey/{{survey._id}}/questions/add" class="btn btn-primary mb-3">Add Question</a>
+    <a href="questions/add" class="btn btn-primary mb-3">Add Question</a>
     <table class="table">
         <thead>
             <tr>
@@ -18,6 +18,7 @@
                 <td>
                     <a href="/survey/{{../survey._id}}/questions/{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
                     <a href="#" class="btn btn-sm btn-danger" onclick="confirmDelete('{{../survey._id}}', '{{_id}}')">Delete</a>
+                     <a href="/survey/{{@root.surveyId}}/sections/{{@root.section._id}}/questions/{{this._id}}/options" class="btn btn-info btn-sm">Manage Options</a>
                 </td>
             </tr>
             {{/each}}
@@ -31,5 +32,4 @@
         if (confirmation) {
             window.location.href = `/survey/${surveyId}/questions/${questionId}/delete`;
         }
-    }
 </script>

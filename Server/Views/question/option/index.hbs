@@ -1,0 +1,49 @@
+  <div class="container mt-5">
+        <h1>{{question.text}} Options</h1>
+        <a href="options/add" class="btn btn-primary mb-3">Add New Option</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Option Text</th>
+                    <th>Value</th>
+                    <th>Next Section</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each options}}
+                <tr>
+                    <td>{{text}}</td>
+                    <td>{{value}}</td>
+                    <td>{{#if nextSection}}{{nextSection.title}}{{else}}N/A{{/if}}</td>
+                    <td>
+                        <a href="{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
+                        <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{../../surveyId}}', '{{../questionId}}', '{{_id}}')">Delete</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function confirmDelete(surveyId, questionId, optionId) {
+            var confirmation = confirm('Are you sure you want to delete this option?');
+            if (confirmation) {
+                fetch(`/survey/${surveyId}/questions/${questionId}/options/${optionId}/delete`, {
+                    method: 'POST', // or 'DELETE'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload(); // Reload the page to reflect the deletion
+                    } else {
+                        alert('Error deleting option');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>

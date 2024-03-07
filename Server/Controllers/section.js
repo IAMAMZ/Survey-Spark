@@ -25,11 +25,13 @@ const sectionController = {
       const section = await Section.findById(sectionId)
         .populate("questions")
         .exec();
+
       if (!section) {
-        return res.status(404).send("Survey not found");
+        return res.status(404).send("Section not found");
       }
 
       res.render("section/questionPortal", {
+        surveyId: req.params.surveyId,
         section: section,
         questions: section.questions,
       });

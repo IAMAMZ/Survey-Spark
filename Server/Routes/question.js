@@ -27,5 +27,16 @@ router.post(
   "/:surveyId/sections/:sectionId/questions/:questionId/edit",
   questionController.updateSurveyQuestion
 );
-
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options",
+  questionController.displayQuestionOptionsPortal
+);
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
+  questionController.displayOptionCreateForm
+);
+router.post(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
+  questionController.saveOption
+);
 module.exports = router;
