@@ -234,6 +234,7 @@
     color: #ffffff;
     padding: 10px 0;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
 }
 .login-submit-btn:hover {
     background-color: #2f47d2;
