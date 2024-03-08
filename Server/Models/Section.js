@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const sectionSchema = new Schema({
+  surveyId: { type: String, required: true },
   order: Number,
   title: { type: String, required: true },
   description: { type: String, required: true },

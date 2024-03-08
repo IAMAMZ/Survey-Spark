@@ -1,5 +1,8 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
+const Response = require("../Models/Response");
+const Question = require("../Models/Question");
+const mongoose = require("mongoose");
 
 const allSurveys = async (req, res, next) => {
   const surveys = await Survey.find();
@@ -55,7 +58,80 @@ const displaySection = async (req, res, next) => {
 };
 
 const handleResponse = async (req, res, next) => {
-  console.log(req.body);
+  let idOfNextSection;
+  const { surveyId, sectionId } = req.params;
+
+  const responses = req.body;
+  // make a response
+
+  const response = new Response({
+    surveyId: surveyId,
+  });
+  // Iterate over each question-response pair
+  for (const [questionId, answer] of Object.entries(responses)) {
+    // see if question id is multiple choice
+    const question = await Question.findById(questionId);
+
+    if (question.type === "Multiple Choice") {
+      // then find the option
+      for (const option of question.options) {
+        if (option.value === answer) {
+          // set the id of next section
+          idOfNextSection = option.nextSection;
+        }
+      }
+    }
+
+    // save the resposne
+    const answerObj = { questionId: questionId, answer: answer };
+
+    // add the response to response
+    response.answers.push(answerObj);
+
+    await response.save();
+  }
+  console.log("________________________>____________");
+  console.log("ID OF NEXt " + idOfNextSection);
+  console.log("ID OF SECTION  " + sectionId);
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  // if options don't lead to next section then go by next section of survey
+  const currentSection = await Section.findById(sectionId);
+
+  if (currentSection.nextSection) {
+    idOfNextSection = currentSection.nextSection;
+  }
+  // if all fails fo by order
+  if (!idOfNextSection) {
+    const currentOrder = currentSection.order;
+    console.log("((DLSDJF ");
+    console.log(currentOrder);
+    const nextOrder = currentOrder + 1; // Calculate the next order
+
+    console.log("NEX ORDER IS ", nextOrder);
+
+    // Try to find the next section by its order
+    const nextSection = await Section.findOne({
+      surveyId: surveyId,
+      order: nextOrder,
+    });
+
+    console.log("SURVEY ID IS ", surveyId);
+
+    console.log("NEXT SECTIONIS ", nextSection);
+
+    if (nextSection) {
+      // If a next section is found, use its ID for redirection
+      idOfNextSection = nextSection._id;
+    } else {
+      // If no next section is found, this indicates the end of the survey
+      // Redirect to the survey completion or submission page
+      return res.redirect("/survey/complete");
+    }
+  }
+
+  // Redirect to the next section
+  res.redirect(`/takeSurvey/${surveyId}/sections/${idOfNextSection}`);
+  //await response.save();
 };
 
 module.exports = {

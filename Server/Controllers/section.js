@@ -83,6 +83,7 @@ const sectionController = {
 
       // Create the new Section with the calculated order
       const newSection = new Section({
+        surveyId: surveyId,
         title,
         description,
         order: nextOrder,
