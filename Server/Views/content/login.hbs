@@ -1,0 +1,47 @@
+{{!--
+Group Name: SolveSpark (Group 5)
+Product Name: SurveySpark
+Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Urama (1198598)
+--}}
+<section class="login">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-featured-img">
+                <img src="/Assets/images/login-img.png" alt="An illustration of people taking online surveys">
+                {{!-- Sourced under the Pixabay Content License from: https://pixabay.com/illustrations/social-media-social-marketing-5187243/ --}}
+            </div>
+            <div class="login-box-details">
+                <div class="login-logo">
+                    <a href="/login">
+                    <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark official logo">
+                    </a>
+                </div>
+                <div>
+                    <h1>Login</h1>
+                    <p>Please login to continue</p>
+                </div>
+                <div>
+                    <form action="/login" method="post">
+                        <fieldset>
+                            <input type="email" id="user" name="user" placeholder="Enter your email address" >
+                        </fieldset>
+                        <fieldset>
+                            <input type="password" id="password" name="password" placeholder="Enter your password">
+                        </fieldset>
+                        <button type="submit" class="login-submit-btn">Login</button>
+                    </form>
+                </div>
+                <div class="login-nav">
+                    <div>
+                        <p>Or<br /> Login with</p>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

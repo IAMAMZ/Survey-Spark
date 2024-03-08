@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h1>Create a New Section</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+            <div class="invalid-feedback">
+                Please provide a title for the section.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            <div class="invalid-feedback">
+                Please provide a description for the section.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="nextSection" class="form-label">Next Section:</label>
+            <select class="form-select" id="nextSection" name="nextSection">
+                <option value="">Continue to Next Section by Order</option>
+                {{#each sections}}
+                <option value="{{this._id}}">{{this.title}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Section</button>
+    </form>
+</div>

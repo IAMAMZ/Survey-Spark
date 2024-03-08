@@ -10,14 +10,67 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-     <!-- CSS Section -->
+    <!-- CSS Section -->
+    <link rel="stylesheet" href="/Content/new.css">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/Content/app.css">
     <!-- temporary css storage -->
     <link rel="icon" type="image/x-icon" href="/Assets/images/home-header-logo.svg">
 </head>
+<script>
+    // Function to open the sidebar
+    function open_sidebar() {
+        // Assigning object variables
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        // Activating the sidebar
+        sidebar.style.display = "flex";
+        sidebar.classList.remove("inactive");
+        sidebar.classList.add("active");
+        document.getElementById("overlay").style.display = "block";
+
+        // Activating the overlay
+        overlay.style.display = "block";
+        overlay.addEventListener("click", close_sidebar);
+        document.body.style.overflow = "hidden";
+
+        // Forcing the user to be at the top of the screen
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+    // Function to close the sidebar
+    function close_sidebar() {
+        // Assigning object variables
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        // Deactivating the sidebar
+        sidebar.classList.remove("active");
+        sidebar.classList.add("inactive");
+        document.getElementById("overlay").style.display = "none";
+
+        // Disabling the overlay
+        overlay.style.display = "none";
+        overlay.removeEventListener("click", close_sidebar);
+        document.body.style.overflow = "auto";
+
+        // Forcing the user to be at the top of the screen
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    // Dynamically getting the current year and updating it in the copyright
+    // section of the sidebar footer
+    const currentYear = new Date().getFullYear();
+</script>
 <body>
+    {{#unless noHeaderFooter}}
     <header class="home-header">
         <div class="home-header-container">
             <div class="home-header-column">
@@ -40,14 +93,124 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                          <li>
                             <a href="/survey">Surveys</a>
                         </li>
+                        <li>
+                            <a href="/takeSurvey">
+                                Take Surveys
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
+    <header class="home-mobile-header">
+        <div class="header-container">
+                <div class="header-container-nav">
+                    <div class="header-container-nav-item">
+                        <div class="hamburger-container">
+                            <div class="hamburger-btn" onclick=open_sidebar()>
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-container-nav-item">
+                        <div class="mobile-header-logo">
+                            <a href="/">
+                                <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-sidebar">
+                <div class="header-sidebar-container inactive" id="sidebar">
+                    <div class="sidebar-main">
+                        <div class="sidebar-top">
+                            <div>
+                                <div>
+                                    <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                                </div>
+                                <div>
+                                    <div class="rev-hamburger-container">
+                                        <div class="rev-hamburger-btn" onclick=close_sidebar()>
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-middle">
+                            <div class="sidebar-middle-nav">
+                                <ul>
+                                    <li>
+                                        <a href="/about-us">
+                                            <p>About Us</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services">
+                                            <p>Services</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact">
+                                            <p>Contact</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/surveys">
+                                            <p>Surveys</p>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="/takeSurvey">
+                                            <p>Take Surveys</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr/>
+                            <div class="sidebar-middle-nav">
+                                <ul>
+                                    <li>
+                                        <a href="/login">
+                                            <p>Login</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/get-started">
+                                            <p>Get Started</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar-bottom">
+                        <div>
+                            <p>Copyright © {{currentYear}} SurveySpark, Inc. All Rights Reserved.</p>
+                        </div>
+                        {{!-- <div>
+                            <ul>
+                                <li>
+                                    <a href="/privacy-policy">Privacy Policy</a>
+                                </li>
+                                <span class="bullet">&bull;</span>
+                                <li>
+                                    <a href="/terms-of-use">Terms of Use</a>
+                                </li>
+                            </ul>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div id="overlay"></div>
+    </header>
+    {{/unless}}
     <main>
         {{{body}}}
     </main>
+    {{#unless noHeaderFooter}}
     <footer class="home-footer">
         <div class="home-footer-container">
             <div class="home-footer-row">
@@ -98,7 +261,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </footer>
-
+    {{/unless}}
     <!-- Script Section -->
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
