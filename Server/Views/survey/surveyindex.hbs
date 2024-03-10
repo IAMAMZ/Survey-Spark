@@ -19,7 +19,7 @@
             <tbody>
                 {{#each Survey}}
                 <tr>
-                    <th scope="row">{{@index}}</th>
+                    <th scope="row">{{inc @index}}</th>
                     <td><a href="/survey/{{this._id}}/sections" class="link-primary">{{title}}</a></td>
                     <td>{{description}}</td>
                     <td>

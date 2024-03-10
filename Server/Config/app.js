@@ -63,6 +63,11 @@ hbs.registerHelper("ifCond", function (v1, operator, v2, options) {
       return options.inverse(this);
   }
 });
+
+// this helper to increment value 
+hbs.registerHelper('inc', function(value, options) {
+  return parseInt(value) + 1;
+});
 // register hbs helpers
 // hbs.registerPartials(path.join(__dirname, "../Views/components/"));
 // hbs.registerPartials(path.join(__dirname, "../Views/content/"));
