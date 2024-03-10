@@ -47,4 +47,40 @@
     padding: 15px;
     font-size: 20px;
 }
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .docs-intro, .docs-content {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+}
   
