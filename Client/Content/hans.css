@@ -1,0 +1,15 @@
+/* DO NOT USE GLOBAL SELECTORS FOR STYLING, REFERENCE FROM YOUR DOCS.HBS ONLY AND TARGET USING CLASSES */
+.docs{
+    text-align: center;
+}
+.docs-intro{
+    /* styles for the element with class "docs" */
+    padding: 20px;
+}
+.docs-intro h1{
+    /* styles for the element with class "docs" */
+    font-size: 40px;
+    color: #0000ff;
+    font-weight: bold;
+}
+  
