@@ -52,25 +52,23 @@ const saveSurveyQuestion = async (req, res, next) => {
 
 const deleteQuestion = async (req, res, next) => {
   try {
-    // Find the survey by ID
-    let survey = await Survey.findById(req.params.surveyId);
+    // Find the section parent
+    const section = await Section.findById(req.params.sectionId)
+    .populate("questions")
+    .exec();
 
-    // If the survey doesn't exist, return 404
-    if (!survey) {
-      return res.status(404).send("Survey not found");
-    }
-
-    // Remove the question from the survey's questions array
+  
+    // Remove the question from the section's questions array
     // Filter out the question to delete by its ID
-    survey.questions = survey.questions.filter(
+    section.questions = section.questions.filter(
       (question) => question._id.toString() !== req.params.questionId
     );
 
     // Save the updated survey
-    await survey.save();
+    await section.save();
 
     // Redirect back to the survey details page,
-    res.redirect(`/survey/details/${req.params.surveyId}`);
+    res.redirect(`/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`);
   } catch (error) {
     console.error("Error deleting question:", error);
     res.status(500).send("Error deleting the question");
@@ -80,22 +78,15 @@ const deleteQuestion = async (req, res, next) => {
 const updateSurveyQuestion = async (req, res, next) => {
   try {
     // Find the survey by ID
-    let survey = await Survey.findById(req.params.surveyId);
+    const section = await Section.findById(req.params.sectionId)
+    .populate("questions")
+    .exec();
 
-    // If the survey doesn't exist, return 404
-    if (!survey) {
-      return res.status(404).send("Survey not found");
-    }
 
     // Find the question within the survey's questions array by its ID
-    let question = survey.questions.find(
+    let question = section.questions.find(
       (question) => question._id.toString() === req.params.questionId
     );
-
-    // If the question doesn't exist, return 404
-    if (!question) {
-      return res.status(404).send("Question not found");
-    }
 
     // Extract updated question details from request body
     const { text, type, options } = req.body;
@@ -115,11 +106,11 @@ const updateSurveyQuestion = async (req, res, next) => {
       question.options = [];
     }
 
-    // Save the updated survey
-    await survey.save();
+    // Save the updated section
+    await section.save();
 
     // Redirect back to the survey details page
-    res.redirect(`/survey/details/${survey._id}`);
+    res.redirect(`/survey/${survey._id}`);
   } catch (error) {
     console.error("Error updating question:", error);
     res.status(500).send("Error updating question");
@@ -128,16 +119,19 @@ const updateSurveyQuestion = async (req, res, next) => {
 
 const displayQuestionEditForm = async (req, res, next) => {
   // Retrieve the survey and question details
-  let survey = await Survey.findById(req.params.surveyId);
-  let question = survey.questions.find(
+  const section = await Section.findById(req.params.sectionId)
+  .populate("questions")
+  .exec();
+
+  let question = section.questions.find(
     (q) => q._id.toString() === req.params.questionId
   );
+
 
   // Render the edit question form
   res.render("question/edit", {
     title: "Edit Question",
     page: "edit",
-    survey: survey,
     question: question,
   });
 };
