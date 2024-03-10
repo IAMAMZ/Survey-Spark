@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    {{#each surveysWithResponses}}
+        <div class="card mb-4">
+            <div class="card-header">
+                {{survey.title}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{survey.description}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Responses</h6>
+                {{#if responses.length}}
+                    <ul class="list-group list-group-flush">
+                        {{#each responses}}
+                            <li class="list-group-item">
+                               
+                                <br>
+                                Submitted: {{#if this.isSubmitted}}Yes{{else}}No{{/if}}
+                                <br>
+                                Answers: 
+                                <ul>
+                                   {{#each this.answers}}
+                                        <li>Question: {{this.questionText}}, Answer: {{this.answer}}</li>
+                                    {{/each}}
+
+                                </ul>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                    <p>No responses yet.</p>
+                {{/if}}
+            </div>
+        </div>
+    {{else}}
+        <p>No surveys found.</p>
+    {{/each}}
+</div>
