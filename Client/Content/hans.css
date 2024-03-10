@@ -8,8 +8,14 @@
 }
 .docs-intro h1{
     /* styles for the element with class "docs" */
-    font-size: 40px;
+    font-size: 50px;
     color: #0000ff;
     font-weight: bold;
+}
+.docs-intro p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    margin-top: 30px;
 }
   
