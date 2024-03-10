@@ -1214,6 +1214,12 @@ section {
     color: #000000;
     font-size: 1.5em;
 }
+.custom-survey-container{
+    margin-bottom: 200px;
+}
+.all-survey-container {
+    margin-bottom: 400px;
+}
 .custom-survey-container .question-block {
     margin-bottom: 1.5rem;
 }

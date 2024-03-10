@@ -125,7 +125,7 @@ const handleResponse = async (req, res, next) => {
     } else {
       // If no next section is found, this indicates the end of the survey
       // Redirect to the survey completion or submission page
-      return res.redirect("/survey/complete");
+      return res.redirect("/takeSurvey/complete");
     }
   }
 
@@ -134,9 +134,15 @@ const handleResponse = async (req, res, next) => {
   //await response.save();
 };
 
+const renderSurveyComplete = async (req, res, next) => {
+  console.log("<<<<<<<<<<<<_>>>>>>>>>>>>>>>>");
+  res.render("takeSurvey/surveyComplete");
+};
+
 module.exports = {
   allSurveys,
   takeSurvey,
   displaySection,
   handleResponse,
+  renderSurveyComplete,
 };
