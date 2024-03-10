@@ -4,7 +4,7 @@
 }
 .docs-intro{
     /* styles for the element with class "docs" */
-    padding: 20px;
+    padding: 30px;
 }
 .docs-intro h1{
     /* styles for the element with class "docs" */
@@ -17,5 +17,35 @@
     font-size: 20px;
     color: #000000;
     margin-top: 30px;
+}
+.docs-content{
+    /* styles for the element with class "docs" */
+    padding: 30px;
+}
+
+.docs-content h2{
+    /* styles for the element with class "docs" */
+    font-size: 30px;
+    color: #0000ff;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.docs-content p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.docs-content ul{
+    /* styles for the element with class "docs" */
+    list-style: decimal inside;
+    color: #000000;
+}
+.docs-content ul li{
+    /* styles for the element with class "docs" */
+    margin-top: 10px;
+    font-size: 20px;
 }
   
