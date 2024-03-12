@@ -30,6 +30,9 @@ router.get("/login", IndexController.DisplayLogin);
 /* GET Get Started Page */
 router.get("/get-started", IndexController.DisplayGetStarted);
 
+/* GET Docs Page */
+router.get("/docs", IndexController.DisplayDocs);
+
 router.use((req, res, next) => {
   IndexController.DisplayNotFound(req, res, next);
 });
