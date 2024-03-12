@@ -16,9 +16,11 @@
                 <td>{{text}}</td>
                 <td>{{type}}</td>
                 <td>
-                    <a href="/survey/{{../survey._id}}/questions/{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
-                    <a href="#" class="btn btn-sm btn-danger" onclick="confirmDelete('{{../survey._id}}', '{{_id}}')">Delete</a>
+                    <a href="questions/{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
+                    <a href="questions/{{_id}}/delete" class="btn btn-sm btn-danger" onclick="confirmDelete('{{../survey._id}}', '{{_id}}')">Delete</a>
+                    {{#ifCond type '===' 'Multiple Choice'}}
                      <a href="/survey/{{@root.surveyId}}/sections/{{@root.section._id}}/questions/{{this._id}}/options" class="btn btn-info btn-sm">Manage Options</a>
+                    {{/ifCond}}
                 </td>
             </tr>
             {{/each}}

@@ -31,6 +31,7 @@ const surveyRouter = require("../Routes/survey.js");
 const questionRouter = require("../Routes/question.js");
 const sectionRouter = require("../Routes/section.js");
 const takeSurveyRouter = require("../Routes/takeSurvey.js");
+const responseRouter = require("../Routes/response.js");
 const app = express();
 
 // link to .env file if not in production mode
@@ -63,6 +64,11 @@ hbs.registerHelper("ifCond", function (v1, operator, v2, options) {
       return options.inverse(this);
   }
 });
+
+// this helper to increment value 
+hbs.registerHelper('inc', function(value, options) {
+  return parseInt(value) + 1;
+});
 // register hbs helpers
 // hbs.registerPartials(path.join(__dirname, "../Views/components/"));
 // hbs.registerPartials(path.join(__dirname, "../Views/content/"));
@@ -80,10 +86,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
+/**************** Routes **************************/
+
 app.use("/survey", sectionRouter);
 app.use("/survey", surveyRouter);
 app.use("/survey", questionRouter);
 app.use("/takeSurvey", takeSurveyRouter);
+app.use("/responses",responseRouter);
 
 app.use("/", indexRouter);
 hbs.registerHelper("selectOption", (currentValue, selectedValue) => {

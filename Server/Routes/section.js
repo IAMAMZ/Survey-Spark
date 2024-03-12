@@ -24,11 +24,11 @@ router.get(
 );
 
 router.get(
-  "/:surveyId/section/:sectionId/edit",
+  "/:surveyId/sections/:sectionId/edit",
   sectionController.displaySectionEditForm
 );
 router.post(
-  "/:surveyId/questions/:questionId/edit",
+  "/:surveyId/sections/:sectionId/edit",
   sectionController.updateSurveySection
 );
 

@@ -107,14 +107,28 @@ const sectionController = {
   deleteSection: async (req, res) => {
     const { surveyId, sectionId } = req.params;
     try {
+      // Find the section to get its order before deletion
+      const sectionToDelete = await Section.findById(sectionId);
+      if (!sectionToDelete) {
+        return res.status(404).send("Section not found");
+      }
+      const deletedSectionOrder = sectionToDelete.order;
+  
+      // Delete the section
       await Section.findByIdAndDelete(sectionId);
-
-      // remove the section reference from the survey
+  
+      // Remove the section reference from the survey
       await Survey.findByIdAndUpdate(surveyId, {
         $pull: { sections: sectionId },
       });
-
-      res.redirect(`/surveys/${surveyId}`);
+  
+      // Decrement the order of subsequent sections
+      await Section.updateMany(
+        { surveyId: surveyId, order: { $gt: deletedSectionOrder } },
+        { $inc: { order: -1 } } // Decrement the order by 1
+      );
+  
+      res.redirect(`/survey/${surveyId}/sections`);
     } catch (error) {
       res.status(500).send(error.toString());
     }
@@ -129,7 +143,7 @@ const sectionController = {
         return res.status(404).send("Section not found");
       }
       // Render edit form with section data
-      res.render("sectionEditForm", { section });
+      res.render("section/edit", { section });
     } catch (error) {
       res.status(500).send(error.toString());
     }
@@ -138,20 +152,29 @@ const sectionController = {
   // Update an existing section in a survey
   updateSurveySection: async (req, res) => {
     const { sectionId } = req.params;
-    try {
-      const updatedSection = await Section.findByIdAndUpdate(
-        sectionId,
-        req.body,
-        { new: true }
-      );
+    const { title, description, nextSection } = req.body;
+    
+    // Prepare the update object, excluding nextSection initially
+    let update = {
+      title,
+      description,
+    };
+    
+    // Conditionally add nextSection if it's not empty and is a valid ObjectId
+    if (nextSection && mongoose.Types.ObjectId.isValid(nextSection)) {
+      update.nextSection = nextSection;
+    } else {
+      // If nextSection is empty or invalid, ensure it is unset from the document--> we could refactor later to make next seciton empty by default
+      update.$unset = { nextSection: "" };
+    }
+  
+      const updatedSection = await Section.findByIdAndUpdate(sectionId, update, { new: true });
       if (!updatedSection) {
         return res.status(404).send("Section not found");
       }
       // Redirect or respond
-      res.redirect(`/surveys/${updatedSection._id}`); // Adjust redirect as needed
-    } catch (error) {
-      res.status(400).send(error.toString());
-    }
+      res.redirect(`/survey/{${sectionId}/sections`); 
+   
   },
 };
 

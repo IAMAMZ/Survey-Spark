@@ -36,6 +36,10 @@ function DisplayGetStarted(req, res, next) {
   res.render("content/get-started", { title: "Get Started", page: "get-started", noHeaderFooter: true });
 }
 
+function DisplayDocs(req, res, next) {
+  res.render("content/docs", { title: "Docs", page: "docs" });
+}
+
 module.exports = {
   DisplayHome: DisplayHome,
   DisplayAbout: DisplayAbout,
@@ -43,5 +47,6 @@ module.exports = {
   DisplayServices: DisplayServices,
   DisplayNotFound: DisplayNotFound,
   DisplayLogin: DisplayLogin,
-  DisplayGetStarted: DisplayGetStarted
+  DisplayGetStarted: DisplayGetStarted,
+  DisplayDocs: DisplayDocs
 };

@@ -1,0 +1,86 @@
+/* DO NOT USE GLOBAL SELECTORS FOR STYLING, REFERENCE FROM YOUR DOCS.HBS ONLY AND TARGET USING CLASSES */
+.docs{
+    text-align: center;
+}
+.docs-intro{
+    /* styles for the element with class "docs" */
+    padding: 30px;
+}
+.docs-intro h1{
+    /* styles for the element with class "docs" */
+    font-size: 50px;
+    color: #0000ff;
+    font-weight: bold;
+}
+.docs-intro p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    margin-top: 30px;
+}
+.docs-content{
+    /* styles for the element with class "docs" */
+    padding: 30px;
+}
+
+.docs-content h2{
+    /* styles for the element with class "docs" */
+    font-size: 30px;
+    color: #0000ff;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.docs-content p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.docs-content ul{
+    /* styles for the element with class "docs" */
+    list-style: decimal inside;
+    color: #000000;
+}
+.docs-content ul li{
+    /* styles for the element with class "docs" */
+    padding: 15px;
+    font-size: 20px;
+}
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .docs-intro, .docs-content {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+}
+  

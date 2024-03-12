@@ -15,7 +15,7 @@ router.post(
 );
 
 router.get(
-  "/:surveyId/sections/:sectionId/questions/delete",
+  "/:surveyId/sections/:sectionId/questions/:questionId/delete",
   questionController.deleteQuestion
 );
 

@@ -1214,3 +1214,39 @@ section {
     color: #000000;
     font-size: 1.5em;
 }
+.custom-survey-container{
+    margin-bottom: 200px;
+}
+.all-survey-container {
+    margin-bottom: 400px;
+}
+.custom-survey-container .question-block {
+    margin-bottom: 1.5rem;
+}
+
+.custom-survey-container .question-text {
+    font-size: 1.1rem; 
+    margin-bottom: 0.5rem; 
+    font-weight: bold;
+}
+
+.custom-survey-container .options-container .option-item {
+    margin-bottom: 0.25rem; 
+}
+
+.custom-survey-container .short-answer {
+    margin-top: 0.5rem; 
+}
+
+.custom-survey-container .submit-btn {
+    background-color: #007bff; 
+    border-color: #0069d9; 
+    padding: 0.375rem 0.75rem; 
+    font-size: 1rem; 
+}
+
+
+.custom-survey-container .submit-btn:hover {
+    background-color: #0069d9;
+    border-color: #005cbf;
+}

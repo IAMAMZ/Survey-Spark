@@ -1,19 +1,21 @@
 <div class="container mt-5">
     <h2>Edit Question</h2>
-    <form action="/survey/{{survey._id}}/questions/{{question._id}}/edit" method="POST" class="mt-3">
+    <form  method="POST" class="mt-3">
         <div class="form-group">
             <label for="text">Question Text</label>
             <input type="text" class="form-control" id="text" name="text" value="{{question.text}}" required>
         </div>
-        {{!-- Unable to change question type, only edit name and/or mulitple choice selections --}}
-        <div class="form-group">
+        {{!-- <div class="form-group">
             <label for="type">Question Type</label>
-            <input style="background-color: #eeeeee;" type="text" class="form-control" id="type" name="type" value="{{question.type}}" readonly>
+            <select class="form-control" id="type" name="type" required >
+                <option value="">Select Type</option>
+                <option value="Multiple Choice" {{ifCond question.type "===" "Multiple Choice"}}selected{{/ifCond}}>Multiple Choice</option>
+                <option value="Short Answer" {{ifCond question.type "===" "Short Answer"}}selected{{/ifCond}}>Short Answer</option>
+            </select>
         </div>
-        <div class="form-group">
-            <label for="options">Options (for Multiple Choice, separate by comma)</label>
-            <input type="text" class="form-control" id="options" name="options" value="{{#each question.options}}{{this.text}}{{#unless @last}}, {{/unless}}{{/each}}">
-        </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+       --}}
+        <button type="submit" class="btn btn-primary">Update Question</button>
     </form>
 </div>
+
+
