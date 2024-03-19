@@ -45,7 +45,7 @@ const index = async (req, res, next) => {
         console.log("Surveys with Responses", surveysWithResponses);
 
         // Render your view with the combined data
-        res.render("response/index", { surveysWithResponses, user: req.user });
+        res.render("response/index", { surveysWithResponses, User: req.User });
     } catch (error) {
         console.error("Error fetching surveys and responses:", error);
         next(error); // Pass the error to the next middleware

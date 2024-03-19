@@ -8,7 +8,7 @@ const displayQuestionCreateForm = async (req, res, next) => {
   res.render("question/create", {
     title: "Add Question",
     page: "create",
-    user: req.user,
+    User: req.User,
     surveyId: req.params.surveyId,
   });
 };
