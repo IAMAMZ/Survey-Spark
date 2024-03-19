@@ -1,7 +1,7 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
 const Question = require("../Models/Question");
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 
 const sectionController = {

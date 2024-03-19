@@ -1,4 +1,4 @@
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 /**
  * This function will display the home page

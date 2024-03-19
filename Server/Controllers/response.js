@@ -1,7 +1,7 @@
 const Response = require("../Models/Response");
 const Survey = require("../Models/Survey");
 const Question = require("../Models/Question"); 
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 // response with quesitons is like a view model
 

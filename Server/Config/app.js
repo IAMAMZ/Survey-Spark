@@ -90,7 +90,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const User = require('../Models/user');
+const User = require('../Models/User.js');
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());

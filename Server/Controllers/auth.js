@@ -1,4 +1,4 @@
-let User = require('../Models/user');
+let User = require('../Models/User');
 const passport = require('passport');
 
 let displayRegisterForm = (req, res, next) => {

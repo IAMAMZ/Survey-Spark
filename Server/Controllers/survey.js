@@ -1,6 +1,6 @@
 // get the survey model
 const Survey = require("../Models/Survey");
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 let surveyIndex = async (req, res, next) => {
   try {

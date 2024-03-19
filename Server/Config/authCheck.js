@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 let isAuthenticated = (req, res, next) => {
     if (!req.isAuthenticated()) {

@@ -3,7 +3,7 @@ const Section = require("../Models/Section");
 const Response = require("../Models/Response");
 const Question = require("../Models/Question");
 const mongoose = require("mongoose");
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 const allSurveys = async (req, res, next) => {
   const surveys = await Survey.find();
