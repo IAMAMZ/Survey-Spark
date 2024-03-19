@@ -1,6 +1,7 @@
 const Response = require("../Models/Response");
 const Survey = require("../Models/Survey");
 const Question = require("../Models/Question"); 
+const User = require('../Models/user');
 
 // response with quesitons is like a view model
 
@@ -44,7 +45,7 @@ const index = async (req, res, next) => {
         console.log("Surveys with Responses", surveysWithResponses);
 
         // Render your view with the combined data
-        res.render("response/index", { surveysWithResponses });
+        res.render("response/index", { surveysWithResponses, user: req.user });
     } catch (error) {
         console.error("Error fetching surveys and responses:", error);
         next(error); // Pass the error to the next middleware

@@ -4,6 +4,9 @@ Product Name: SurveySpark
 Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Urama (1198598)
 --}}
 {{!-- Used the same classes as login to save time --}}
+{{#if messages}}
+<p class="alert alert-danger">{{messages}}</p>
+{{/if}}
 <section class="login">
     <div class="login-container">
         <div class="login-box">
@@ -22,15 +25,15 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                     <p>Please register as a new user to continue</p>
                 </div>
                 <div>
-                    <form action="/auth/register" method="post">
+                    <form method="post">
                         <fieldset>
-                            <input type="email" id="user" name="user" placeholder="Enter your email address" >
+                            <input type="username" id="username" name="username" placeholder="Enter your email address" required >
                         </fieldset>
                         <fieldset>
-                            <input type="password" id="password" name="password" placeholder="Enter your password">
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="10">
                         </fieldset>
                         <fieldset>
-                            <input type="password" id="password" name="password" placeholder="Confirm your password">
+                            <input type="password" id="confirm" name="confirm" placeholder="Confirm your password" required minlength="10">
                         </fieldset>
                         <button type="submit" class="login-submit-btn">Register</button>
                     </form>

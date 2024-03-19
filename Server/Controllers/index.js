@@ -30,10 +30,6 @@ function DisplayNotFound(req, res, next) {
   res.render("content/notFound", { title: "NotFound", page: "notFound", user: req.user });
 }
 
-// function DisplayLogin(req, res, next) {
-//   res.render("content/login", { title: "Login", page: "login", noHeaderFooter: true });
-// }
-
 function DisplayGetStarted(req, res, next) {
   res.render("content/get-started", { title: "Get Started", page: "get-started", noHeaderFooter: true, user: req.user });
 }

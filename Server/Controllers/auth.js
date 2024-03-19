@@ -19,7 +19,7 @@ let submitRegister = (req, res, next) => {
         }
         else {
             req.login(newUser, (err) => {
-                res.redirect('/surveys');
+                res.redirect('/survey');
             });
         }
     });
@@ -49,7 +49,7 @@ let submitLogin = (req, res, next) => {
         else {
             req.login(user, (err) => {
                 if (user) {
-                    return res.redirect('/surveys');
+                    return res.redirect('/survey');
                 }
                 else {
                     return res.redirect('/auth/login/invalid');
