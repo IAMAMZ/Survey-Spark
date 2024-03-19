@@ -80,6 +80,21 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                 </div>
                 <div>
                     <ul class="home-header-nav-bar">
+                        {{#if user}}
+                        <li>
+                            <a href="/survey">Surveys</a>
+                        </li>
+                        <li>
+                            <a href="/responses">
+                                Responses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/auth/logout">
+                                Logout
+                            </a>
+                        </li>
+                        {{else}}
                         <li>
                             <a href="/about">About Us</a>
                         </li>
@@ -92,19 +107,12 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <li>
                             <a href="/contact">Contact</a>
                         </li>
-                         <li>
-                            <a href="/survey">Surveys</a>
-                        </li>
                         <li>
                             <a href="/takeSurvey">
                                 Take Surveys
                             </a>
                         </li>
-                        <li>
-                            <a href="/responses">
-                                Responses
-                            </a>
-                        </li>
+                        {{/if}}
                     </ul>
                 </div>
             </div>
@@ -157,6 +165,18 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <div class="sidebar-middle">
                             <div class="sidebar-middle-nav">
                                 <ul>
+                                    {{#if user}}
+                                    <li>
+                                        <a href="/surveys">
+                                            <p>Surveys</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/responses">
+                                            Responses
+                                        </a>
+                                    </li>
+                                    {{else}}
                                     <li>
                                         <a href="/about-us">
                                             <p>About Us</p>
@@ -172,28 +192,26 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                                             <p>Contact</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/surveys">
-                                            <p>Surveys</p>
-                                        </a>
-                                    </li>
                                      <li>
                                         <a href="/takeSurvey">
                                             <p>Take Surveys</p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/responses">
-                                            Responses
-                                        </a>
-                                    </li>
+                                    {{/if}}
                                 </ul>
                             </div>
                             <hr/>
                             <div class="sidebar-middle-nav">
                                 <ul>
+                                    {{#if user}}
                                     <li>
-                                        <a href="/login">
+                                        <a href="/auth/logout">
+                                            <p>Logout</p>
+                                        </a>
+                                    </li>
+                                    {{else}}
+                                    <li>
+                                        <a href="/auth/login">
                                             <p>Login</p>
                                         </a>
                                     </li>
@@ -202,6 +220,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                                             <p>Get Started</p>
                                         </a>
                                     </li>
+                                    {{/if}}
                                 </ul>
                             </div>
                         </div>
