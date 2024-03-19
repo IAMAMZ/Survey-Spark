@@ -8,6 +8,8 @@ const dotenv = require("dotenv");
 const Survey = require("../Models/Survey.js");
 const Response = require("../Models/Response.js");
 const mongoose = require("mongoose");
+const passport = require('passport');
+const session = require('express-session');
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -26,6 +28,7 @@ mongoose
   .catch((err) => console.err("Could not connect to MongoDb", err));
 
 // Routing modules
+const authRouter = require('../Routes/auth');
 const indexRouter = require("../Routes/index.js");
 const surveyRouter = require("../Routes/survey.js");
 const questionRouter = require("../Routes/question.js");
@@ -69,14 +72,6 @@ hbs.registerHelper("ifCond", function (v1, operator, v2, options) {
 hbs.registerHelper('inc', function(value, options) {
   return parseInt(value) + 1;
 });
-// register hbs helpers
-// hbs.registerPartials(path.join(__dirname, "../Views/components/"));
-// hbs.registerPartials(path.join(__dirname, "../Views/content/"));
-
-// hbs.registerHelper("loadPage", function (pageName) {
-//   console.log("pageName: " + pageName);
-//   return pageName;
-// });
 
 // middleware configuration
 app.use(logger("dev"));
@@ -86,11 +81,27 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../../Client")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
+app.use(session({
+  secret: process.env.PASSPORT_SECRET,
+  resave: true,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('../Models/user');
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 /**************** Routes **************************/
 
 app.use("/survey", sectionRouter);
 app.use("/survey", surveyRouter);
 app.use("/survey", questionRouter);
+app.use('/auth', authRouter);
 app.use("/takeSurvey", takeSurveyRouter);
 app.use("/responses",responseRouter);
 

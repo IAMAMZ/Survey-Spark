@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const plm = require('passport-local-mongoose'); 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
@@ -14,4 +15,5 @@ const userSchema = new Schema({
   responses: [{ type: Schema.Types.ObjectId, ref: "Response" }], // to query responses per user easily (otherwise you have to query response collection)
 });
 
+userSchema.plugin(plm);
 module.exports = mongoose.model("User", userSchema);
