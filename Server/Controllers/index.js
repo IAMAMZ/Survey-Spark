@@ -11,31 +11,31 @@ const User = require('../Models/User');
 
 function DisplayHome(req, res, next) {
   const currentYear = new Date().getFullYear();
-  res.render("content/home", { title: "Home", page: "home", user: req.user, currentYear: currentYear });
+  res.render("content/home", { title: "Home", page: "home", User: req.User, currentYear: currentYear });
 }
 
 function DisplayAbout(req, res, next) {
-  res.render("content/about", { title: "About Us", page: "about", user: req.user });
+  res.render("content/about", { title: "About Us", page: "about", User: req.User });
 }
 
 function DisplayContact(req, res, next) {
-  res.render("content/contact", { title: "Contact Us", page: "contact", user: req.user });
+  res.render("content/contact", { title: "Contact Us", page: "contact", User: req.User });
 }
 
 function DisplayServices(req, res, next) {
-  res.render("content/services", { title: "Services", page: "services", user: req.user });
+  res.render("content/services", { title: "Services", page: "services", User: req.User });
 }
 // match every other path here
 function DisplayNotFound(req, res, next) {
-  res.render("content/notFound", { title: "NotFound", page: "notFound", user: req.user });
+  res.render("content/notFound", { title: "NotFound", page: "notFound" });
 }
 
 function DisplayGetStarted(req, res, next) {
-  res.render("content/get-started", { title: "Get Started", page: "get-started", noHeaderFooter: true, user: req.user });
+  res.render("content/get-started", { title: "Get Started", page: "get-started", noHeaderFooter: true, User: req.User });
 }
 
 function DisplayDocs(req, res, next) {
-  res.render("content/docs", { title: "Docs", page: "docs", user: req.user });
+  res.render("content/docs", { title: "Docs", page: "docs", User: req.User });
 }
 
 module.exports = {
