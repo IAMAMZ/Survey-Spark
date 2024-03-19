@@ -250,6 +250,24 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
         {{{body}}}
     </main>
     {{#unless noHeaderFooter}}
+    {{#if user}}
+    <footer class="home-footer">
+        <div class="home-footer-container">
+            <div class="home-footer-row">
+                <div class="home-footer-column">
+                    <p>Copyright © 2024 SurveySpark, Inc. All Rights Reserved.</p>
+                </div>
+                <div class="home-footer-column">
+                    <ul class="home-footer-legal-nav">
+                        <li>
+                            <a href="https://github.com/fconiglione/SurveySpark" target="_blank">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {{else}}
     <footer class="home-footer">
         <div class="home-footer-container">
             <div class="home-footer-row">
@@ -308,6 +326,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </footer>
+    {{/if}}
     {{/unless}}
     <!-- Script Section -->
     <script src="/jquery/dist/jquery.min.js"></script>
