@@ -1250,3 +1250,89 @@ section {
     background-color: #0069d9;
     border-color: #005cbf;
 }
+/* Docs Page */
+.docs{
+    text-align: center;
+}
+.docs-intro{
+    /* styles for the element with class "docs" */
+    padding: 30px;
+}
+.docs-intro h1{
+    /* styles for the element with class "docs" */
+    font-size: 50px;
+    color: #0000ff;
+    font-weight: bold;
+}
+.docs-intro p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    margin-top: 30px;
+}
+.docs-content{
+    /* styles for the element with class "docs" */
+    padding: 30px;
+}
+
+.docs-content h2{
+    /* styles for the element with class "docs" */
+    font-size: 30px;
+    color: #0000ff;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.docs-content p{
+    /* styles for the element with class "docs" */
+    font-size: 20px;
+    color: #000000;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.docs-content ul{
+    /* styles for the element with class "docs" */
+    list-style: decimal inside;
+    color: #000000;
+}
+.docs-content ul li{
+    /* styles for the element with class "docs" */
+    padding: 15px;
+    font-size: 20px;
+}
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .docs h1 {
+        font-size: 40px;
+    }
+
+    .docs h2 {
+        font-size: 24px;
+    }
+
+    .docs p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .docs-intro, .docs-content {
+        padding: 15px;
+    }
+
+    .docs h1 {
+        font-size: 30px;
+    }
+
+    .docs h2 {
+        font-size: 18px;
+    }
+
+    .docs p {
+        font-size: 16px;
+    }
+
+    .docs ul {
+        padding-left: 20px;
+    }
+}
+  
