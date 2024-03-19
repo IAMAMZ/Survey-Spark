@@ -3,11 +3,12 @@ const Section = require("../Models/Section");
 const Response = require("../Models/Response");
 const Question = require("../Models/Question");
 const mongoose = require("mongoose");
+const User = require('../Models/user');
 
 const allSurveys = async (req, res, next) => {
   const surveys = await Survey.find();
 
-  res.render("takeSurvey/index", { surveys: surveys });
+  res.render("takeSurvey/index", { surveys: surveys, user: req.user  });
 };
 
 const takeSurvey = async (req, res, next) => {
@@ -54,6 +55,7 @@ const displaySection = async (req, res, next) => {
 
   res.render("takeSurvey/sectionQuestionRenderer", {
     section: section,
+    user: req.user
   });
 };
 

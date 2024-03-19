@@ -1,5 +1,6 @@
 // get the survey model
 const Survey = require("../Models/Survey");
+const User = require('../Models/user');
 
 let surveyIndex = async (req, res, next) => {
   try {
@@ -7,6 +8,7 @@ let surveyIndex = async (req, res, next) => {
     res.render("survey/surveyindex", {
       title: "Survey Index",
       page: "surveyindex",
+      user: req.user,
       Survey: surveyCollection,
     });
   } catch (error) {
@@ -18,6 +20,7 @@ let surveyIndex = async (req, res, next) => {
 let displayCreateForm = (req, res, next) => {
   res.render("survey/surveyCreate", {
     title: "Survey Index",
+    user: req.user,
     page: "surveyCreate",
   });
 };
@@ -49,6 +52,7 @@ let displayEditForm = async (req, res, next) => {
 
   res.render("survey/edit", {
     title: "Update Survey",
+    user: req.user,
     survey: survey,
   });
 };
@@ -64,6 +68,7 @@ let surveyDetails = async (req, res, next) => {
   let survey = await Survey.findById(req.params._id);
   res.render("survey/details", {
     title: `${survey.title} Details`,
+    user: req.user,
     survey: survey,
   });
 };

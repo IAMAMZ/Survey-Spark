@@ -2,11 +2,13 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
 const Question = require("../Models/Question");
+const User = require('../Models/user');
 
 const displayQuestionCreateForm = async (req, res, next) => {
   res.render("question/create", {
     title: "Add Question",
     page: "create",
+    user: req.user,
     surveyId: req.params.surveyId,
   });
 };
@@ -132,6 +134,7 @@ const displayQuestionEditForm = async (req, res, next) => {
   res.render("question/edit", {
     title: "Edit Question",
     page: "edit",
+    user: req.user,
     question: question,
   });
 };
@@ -151,6 +154,7 @@ const displayQuestionOptionsPortal = async (req, res, next) => {
 
   res.render("question/option/index", {
     question: question,
+    user: req.user,
     options: options,
   });
 };
@@ -160,6 +164,7 @@ const displayOptionCreateForm = async (req, res, next) => {
 
   res.render("question/option/create", {
     surveySections: surveySections.sections,
+    user: req.user
   });
 };
 

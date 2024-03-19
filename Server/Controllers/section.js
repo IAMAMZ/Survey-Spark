@@ -1,6 +1,8 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
 const Question = require("../Models/Question");
+const User = require('../Models/user');
+
 
 const sectionController = {
   displaySectionsInSurvey: async (req, res) => {
@@ -13,6 +15,7 @@ const sectionController = {
 
       res.render("section/index", {
         survey: survey,
+        user: req.user,
         sections: survey.sections, // Pass the populated sections array to the view
       });
     } catch (error) {
@@ -32,6 +35,7 @@ const sectionController = {
 
       res.render("section/questionPortal", {
         surveyId: req.params.surveyId,
+        user: req.user,
         section: section,
         questions: section.questions,
       });
@@ -51,6 +55,7 @@ const sectionController = {
 
       res.render("section/create", {
         surveyId: req.params.surveyId,
+        user: req.user,
         sections: survey.sections,
       });
     } catch (error) {
@@ -143,7 +148,7 @@ const sectionController = {
         return res.status(404).send("Section not found");
       }
       // Render edit form with section data
-      res.render("section/edit", { section });
+      res.render("section/edit", { section, user: req.user });
     } catch (error) {
       res.status(500).send(error.toString());
     }
