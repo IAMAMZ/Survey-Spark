@@ -93,6 +93,9 @@ app.use(passport.session());
 const User = require('../Models/User.js');
 passport.use(User.createStrategy());
 
+const authController = require('../Controllers/auth.js');
+authController.handleGoogleAuthentication();
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
