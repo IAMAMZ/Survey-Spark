@@ -91,10 +91,42 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const User = require('../Models/User.js');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(User.createStrategy());
 
-const authController = require('../Controllers/auth.js');
-authController.handleGoogleAuthentication();
+const callbackURL = process.env.NODE_ENV === 'production' ? 
+    'https://www.surveyspark.ca/auth/google/callback' :
+    'http://localhost:3000/auth/google/callback';
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: callbackURL
+},
+(accessToken, refreshToken, profile, done) => {
+  User.findOne({ googleId: profile.id }) // Remove the callback
+    .then(user => {
+      if (!user) {
+        user = new User({
+          username: profile.displayName,
+          email: profile.emails[0].value,
+          googleId: profile.id,
+          googleToken: accessToken // Store Google access token
+        });
+        return user.save();
+      } else {
+        return user;
+      }
+    })
+    .then(user => {
+      done(null, user);
+    })
+    .catch(err => {
+      console.error("Error finding or creating user:", err);
+      done(err);
+    });
+}
+));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

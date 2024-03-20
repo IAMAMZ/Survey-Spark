@@ -23,38 +23,38 @@ const userSchema = new Schema({
 
 userSchema.plugin(plm);
 
-const callbackURL = process.env.NODE_ENV === 'production' ? 
-    'https://www.surveyspark.ca/auth/google/callback' :
-    'http://localhost:3000/auth/google/callback';
+// const callbackURL = process.env.NODE_ENV === 'production' ? 
+//     'https://www.surveyspark.ca/auth/google/callback' :
+//     'http://localhost:3000/auth/google/callback';
 
-// Creating a user from Google Oauth
+// // Creating a user from Google Oauth
 
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: callbackURL
-},
-(accessToken, refreshToken, profile, done) => {
-  User.findOne({ googleId: profile.id }, (err, user) => {
-    if (err) {
-      return done(err);
-    }
-    if (!user) {
-      user = new User({
-        username: profile.displayName,
-        email: profile.emails[0].value,
-        googleId: profile.id,
-        googleToken: accessToken // Store Google access token
-      });
-      user.save((err) => {
-        if (err) console.error(err);
-        return done(err, user);
-      });
-    } else {
-      return done(err, user);
-    }
-  });
-}
-));
+// passport.use(new GoogleStrategy({
+//   clientID: process.env.GOOGLE_CLIENT_ID,
+//   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//   callbackURL: callbackURL
+// },
+// (accessToken, refreshToken, profile, done) => {
+//   User.findOne({ googleId: profile.id }, (err, user) => {
+//     if (err) {
+//       return done(err);
+//     }
+//     if (!user) {
+//       user = new User({
+//         username: profile.displayName,
+//         email: profile.emails[0].value,
+//         googleId: profile.id,
+//         googleToken: accessToken // Store Google access token
+//       });
+//       user.save((err) => {
+//         if (err) console.error(err);
+//         return done(err, user);
+//       });
+//     } else {
+//       return done(err, user);
+//     }
+//   });
+// }
+// ));
 
 module.exports = mongoose.model("User", userSchema);
