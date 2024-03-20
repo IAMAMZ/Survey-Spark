@@ -972,7 +972,7 @@ section {
 
 /* Responsive Header */
 
-@media screen and (max-width: 511px) {
+@media screen and (max-width: 800px) {
     .home-mobile-header {
         display: flex;
     }
@@ -980,7 +980,7 @@ section {
         display: none;
     }
 }
-@media screen and (min-width: 511px) {
+@media screen and (min-width: 800px) {
     .home-mobile-header {
         display: none;
     }
