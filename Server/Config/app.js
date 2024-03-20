@@ -94,6 +94,8 @@ const User = require('../Models/User.js');
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(User.createStrategy());
 
+// Not very helpful source: https://www.passportjs.org/packages/passport-google-oauth2/
+
 const callbackURL = process.env.NODE_ENV === 'production' ? 
     'https://www.surveyspark.ca/auth/google/callback' :
     'http://localhost:3000/auth/google/callback';
