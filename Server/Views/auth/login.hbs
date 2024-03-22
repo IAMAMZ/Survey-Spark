@@ -21,7 +21,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                 </div>
                 <div>
                     <h1>Login</h1>
-                    <p>Please login to continue</p>
+                    <p>Please login to continue. <a href="/auth/register">New to SurveySpark?</a></p>
                 </div>
                 <div>
                     <form method="post">
@@ -31,6 +31,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <fieldset>
                             <input type="password" id="password" name="password" placeholder="Enter your password" required >
                         </fieldset>
+                        {{!-- <a href="/forgot-password">Forgot your password?</a> --}}
                         <button type="submit" class="login-submit-btn">Login</button>
                     </form>
                 </div>
@@ -39,7 +40,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <p>Or<br /> Login with</p>
                     </div>
                     <div>
-                        <a href="#">
+                        <a href="/auth/google">
                             <i class="fa-brands fa-google"></i>
                         </a>
                     </div>

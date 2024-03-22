@@ -94,11 +94,6 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                                 Take Surveys
                             </a>
                         </li>
-                        <li>
-                            <a href="/auth/logout">
-                                Logout
-                            </a>
-                        </li>
                         {{else}}
                         <li>
                             <a href="/about">About Us</a>
@@ -112,28 +107,26 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <li>
                             <a href="/contact">Contact</a>
                         </li>
-                        <li>
-                            <a href="/auth/login">
-                                Login
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/auth/register">
-                                Register
-                            </a>
-                        </li>
                         {{/if}}
                     </ul>
                 </div>
             </div>
-            {{!-- <div class="home-header-column">
+            <div class="home-header-column">
+                {{#if user}}
+                <div class="home-login-btn button">
+                    <a href="/auth/logout">
+                        Logout
+                    </a>
+                </div>
+                {{else}}
                     <div class="home-login-btn button">
-                        <a href="/login">Log in</a>
+                        <a href="/auth/login">Log in</a>
                     </div>
                     <div class="home-sign-up-btn button">
-                        <a href="/sign-up">Sign up free</a>
+                        <a href="/auth/register">Sign up free</a>
                     </div>
-            </div> --}}
+                {{/if}}
+            </div>
         </div>
     </header>
     <header class="home-mobile-header">
@@ -260,7 +253,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
         {{{body}}}
     </main>
     {{#unless noHeaderFooter}}
-    {{!-- {{#if user}}
+    {{#if user}}
     <footer class="home-footer">
         <div class="home-footer-container">
             <div class="home-footer-row">
@@ -277,7 +270,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </footer>
-    {{else}} --}}
+    {{else}}
     <footer class="home-footer">
         <div class="home-footer-container">
             <div class="home-footer-row">
@@ -292,7 +285,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
                         <a href="/auth/login">Log in</a>
                     </div>
                     <div class="home-get-started-btn button">
-                        <a href="/auth/get-started">Get started</a>
+                        <a href="/get-started">Get started</a>
                     </div>
                 </div>
             </div>
@@ -336,7 +329,7 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             </div>
         </div>
     </footer>
-    {{!-- {{/if}} --}}
+    {{/if}}
     {{/unless}}
     <!-- Script Section -->
     <script src="/jquery/dist/jquery.min.js"></script>

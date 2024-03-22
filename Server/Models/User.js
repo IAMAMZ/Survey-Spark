@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const plm = require('passport-local-mongoose'); 
+
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
@@ -13,7 +15,10 @@ const userSchema = new Schema({
   },
   email: String,
   responses: [{ type: Schema.Types.ObjectId, ref: "Response" }], // to query responses per user easily (otherwise you have to query response collection)
+  googleId: String,
+  googleToken: String,
 });
 
 userSchema.plugin(plm);
-module.exports = mongoose.model("user", userSchema);
+
+module.exports = mongoose.model("User", userSchema);

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 const authController = require('../Controllers/auth');
 
@@ -30,6 +31,16 @@ router.post('/login', (req, res, next) => {
 /* GET: /auth/logout => do the obvious */
 router.get('/logout', (req, res, next) => {
     authController.logout(req, res, next);
+});
+
+/* GET: /auth/google => initiate Google OAuth authentication */
+router.get('/google', (req, res, next) => {
+    authController.initiateGoogleAuthentication(req, res, next);
+});
+
+/* GET: /auth/google/callback => handle Google OAuth callback */
+router.get('/google/callback', (req, res, next) => {
+    authController.handleGoogleAuthenticationCallback(req, res, next);
 });
 
 module.exports = router;

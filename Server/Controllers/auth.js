@@ -41,14 +41,14 @@ let displayLoginForm = (req, res, next) => {
 };
 
 let submitLogin = (req, res, next) => {
-    passport.authenticate('local', (err, user) => {
+    passport.authenticate('local', (err, User) => {
         console.log(err);
         if (err) {
             return res.redirect('/auth/login/invalid');
         }
         else {
-            req.login(user, (err) => {
-                if (user) {
+            req.login(User, (err) => {
+                if (User) {
                     return res.redirect('/survey');
                 }
                 else {
@@ -65,7 +65,36 @@ let logout = (req, res, next) => {
     })
 };
 
+// Function to initiate Google OAuth authentication
+let initiateGoogleAuthentication = (req, res, next) => {
+    passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next);
+};
+
+let handleGoogleAuthenticationCallback = (req, res, next) => {
+    passport.authenticate('google', (err, user) => {
+        if (err) {
+            console.error("Google OAuth Error:", err);
+            return res.redirect('/');
+        }
+        if (!user) {
+            console.error("Google OAuth Error: User not found");
+            return res.redirect('/');
+        }
+
+        // Output user information to the console
+        console.log("Google OAuth User:", user);
+
+        req.login(user, (err) => {
+            if (err) {
+                console.error("Google OAuth Error:", err);
+                return res.redirect('/');
+            }
+            res.redirect('/survey');
+        });
+    })(req, res, next);
+};
+
 // make public
 module.exports = {
-    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout
+    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout, initiateGoogleAuthentication, handleGoogleAuthenticationCallback
 };
