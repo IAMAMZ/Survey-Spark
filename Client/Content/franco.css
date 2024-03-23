@@ -5,3 +5,9 @@ body {
     justify-content: space-between;
     height: 100vh;
 }
+.survey-index {
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 3%;
+    padding-bottom: 5%;
+}

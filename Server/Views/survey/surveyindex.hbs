@@ -1,39 +1,36 @@
 <div class="container mt-5 survey-index">
     <div class="survey-index-title">
-    <h1 class="mb-3">Dashboard</h1>
-    <p>On this page, explore your existing surveys or create new ones effortlessly.</p>
-    <div class="text-end mb-3">
-        <a class="btn btn-primary" href="/survey/create">Add Survey</a>
+        <h1 class="mb-4">Survey Dashboard</h1>
+        <p class="lead mb-4">Your dashboard is your hub for all survey-related activities. Let's get started!</p>
+        <div class="text-start mb-4">
+            <a class="btn btn-primary" href="/survey/create">Create New Survey</a>
+        </div>
     </div>
-    </div>
-    <div class="table-responsive">
-        <table class="table survey-index table-hover align-middle custom-blue-table">
-            <thead class="bg-primary text-white">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each Survey}}
-                <tr>
-                    <th scope="row">{{inc @index}}</th>
-                    <td><a href="/survey/{{this._id}}/sections" class="link-primary">{{title}}</a></td>
-                    <td>{{description}}</td>
-                    <td>
-                        <a href="/survey/edit/{{this._id}}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
-                        <button class="btn btn-sm btn-outline-danger" onclick="confirmDelete('{{this._id}}')">Delete</button>
-                    </td>
-                </tr>
-                {{else}}
-                <tr>
-                    <td colspan="4">No surveys found.</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <hr class="mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {{#each Survey}}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><a href="/survey/{{this._id}}/sections" class="text-decoration-none text-dark">{{title}}</a></h5>
+                    <p class="card-text mb-4">{{description}}</p>
+                    <div class="d-grid gap-2">
+                        <a href="/survey/edit/{{this._id}}" class="btn btn-outline-primary">Edit</a>
+                        <button class="btn btn-outline-danger" onclick="confirmDelete('{{this._id}}')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <p class="card-text">No surveys found.</p>
+                    <a class="btn btn-primary mt-3" href="/survey/create">Create New Survey</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
     </div>
 </div>
 
