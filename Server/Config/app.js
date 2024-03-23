@@ -10,6 +10,9 @@ const Response = require("../Models/Response.js");
 const mongoose = require("mongoose");
 const passport = require('passport');
 const session = require('express-session');
+const createMemoryStore = require('memorystore');
+
+const MemoryStore = createMemoryStore(session);
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -84,7 +87,8 @@ app.use(express.static(path.join(__dirname, "../../node_modules")));
 app.use(session({
   secret: process.env.PASSPORT_SECRET,
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MemoryStore({ checkPeriod: 86400000 })
 }));
 
 app.use(passport.initialize());
