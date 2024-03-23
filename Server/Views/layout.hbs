@@ -69,189 +69,191 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
     const currentYear = new Date().getFullYear();
 </script>
 <body>
-    {{#unless noHeaderFooter}}
-    <header class="home-header">
-        <div class="home-header-container">
-            <div class="home-header-column">
-                <div>
-                    <a href="/">
-                        <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
-                    </a>
+    <div class="top">
+        {{#unless noHeaderFooter}}
+        <header class="home-header">
+            <div class="home-header-container">
+                <div class="home-header-column">
+                    <div>
+                        <a href="/">
+                            <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="home-header-nav-bar">
+                            {{#if user}}
+                            <li>
+                                <a href="/survey">Surveys</a>
+                            </li>
+                            <li>
+                                <a href="/responses">
+                                    Responses
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/takeSurvey">
+                                    Take Surveys
+                                </a>
+                            </li>
+                            {{else}}
+                            <li>
+                                <a href="/about">About Us</a>
+                            </li>
+                            <li>
+                                <a href="/services">Services</a>
+                            </li>
+                            <li>
+                                <a href="/docs">Docs</a>
+                            </li>
+                            <li>
+                                <a href="/contact">Contact</a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <ul class="home-header-nav-bar">
-                        {{#if user}}
-                        <li>
-                            <a href="/survey">Surveys</a>
-                        </li>
-                        <li>
-                            <a href="/responses">
-                                Responses
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/takeSurvey">
-                                Take Surveys
-                            </a>
-                        </li>
-                        {{else}}
-                        <li>
-                            <a href="/about">About Us</a>
-                        </li>
-                        <li>
-                            <a href="/services">Services</a>
-                        </li>
-                         <li>
-                            <a href="/docs">Docs</a>
-                        </li>
-                        <li>
-                            <a href="/contact">Contact</a>
-                        </li>
-                        {{/if}}
-                    </ul>
-                </div>
-            </div>
-            <div class="home-header-column">
-                {{#if user}}
-                <div class="home-login-btn button">
-                    <a href="/auth/logout">
-                        Logout
-                    </a>
-                </div>
-                {{else}}
+                <div class="home-header-column">
+                    {{#if user}}
                     <div class="home-login-btn button">
-                        <a href="/auth/login">Log in</a>
+                        <a href="/auth/logout">
+                            Logout
+                        </a>
                     </div>
-                    <div class="home-sign-up-btn button">
-                        <a href="/auth/register">Sign up free</a>
-                    </div>
-                {{/if}}
+                    {{else}}
+                        <div class="home-login-btn button">
+                            <a href="/auth/login">Log in</a>
+                        </div>
+                        <div class="home-sign-up-btn button">
+                            <a href="/auth/register">Sign up free</a>
+                        </div>
+                    {{/if}}
+                </div>
             </div>
-        </div>
-    </header>
-    <header class="home-mobile-header">
-        <div class="header-container">
-                <div class="header-container-nav">
-                    <div class="header-container-nav-item">
-                        <div class="hamburger-container">
-                            <div class="hamburger-btn" onclick=open_sidebar()>
-                                <i class="fa-solid fa-bars"></i>
+        </header>
+        <header class="home-mobile-header">
+            <div class="header-container">
+                    <div class="header-container-nav">
+                        <div class="header-container-nav-item">
+                            <div class="hamburger-container">
+                                <div class="hamburger-btn" onclick=open_sidebar()>
+                                    <i class="fa-solid fa-bars"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-container-nav-item">
+                            <div class="mobile-header-logo">
+                                <a href="/">
+                                    <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="header-container-nav-item">
-                        <div class="mobile-header-logo">
-                            <a href="/">
-                                <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
-                            </a>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="header-sidebar">
-                <div class="header-sidebar-container inactive" id="sidebar">
-                    <div class="sidebar-main">
-                        <div class="sidebar-top">
-                            <div>
+                <div class="header-sidebar">
+                    <div class="header-sidebar-container inactive" id="sidebar">
+                        <div class="sidebar-main">
+                            <div class="sidebar-top">
                                 <div>
-                                    <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
-                                </div>
-                                <div>
-                                    <div class="rev-hamburger-container">
-                                        <div class="rev-hamburger-btn" onclick=close_sidebar()>
-                                            <i class="fa-solid fa-circle-xmark"></i>
+                                    <div>
+                                        <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                                    </div>
+                                    <div>
+                                        <div class="rev-hamburger-container">
+                                            <div class="rev-hamburger-btn" onclick=close_sidebar()>
+                                                <i class="fa-solid fa-circle-xmark"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sidebar-middle">
-                            <div class="sidebar-middle-nav">
-                                <ul>
-                                    {{#if user}}
-                                    <li>
-                                        <a href="/surveys">
-                                            <p>Surveys</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/responses">
-                                            Responses
-                                        </a>
-                                    </li>
-                                    {{else}}
-                                    <li>
-                                        <a href="/about-us">
-                                            <p>About Us</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/services">
-                                            <p>Services</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/contact">
-                                            <p>Contact</p>
-                                        </a>
-                                    </li>
-                                     <li>
-                                        <a href="/takeSurvey">
-                                            <p>Take Surveys</p>
-                                        </a>
-                                    </li>
-                                    {{/if}}
-                                </ul>
+                            <div class="sidebar-middle">
+                                <div class="sidebar-middle-nav">
+                                    <ul>
+                                        {{#if user}}
+                                        <li>
+                                            <a href="/surveys">
+                                                <p>Surveys</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/responses">
+                                                Responses
+                                            </a>
+                                        </li>
+                                        {{else}}
+                                        <li>
+                                            <a href="/about-us">
+                                                <p>About Us</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/services">
+                                                <p>Services</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">
+                                                <p>Contact</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/takeSurvey">
+                                                <p>Take Surveys</p>
+                                            </a>
+                                        </li>
+                                        {{/if}}
+                                    </ul>
+                                </div>
+                                <hr/>
+                                <div class="sidebar-middle-nav">
+                                    <ul>
+                                        {{#if user}}
+                                        <li>
+                                            <a href="/auth/logout">
+                                                <p>Logout</p>
+                                            </a>
+                                        </li>
+                                        {{else}}
+                                        <li>
+                                            <a href="/auth/login">
+                                                <p>Login</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/get-started">
+                                                <p>Get Started</p>
+                                            </a>
+                                        </li>
+                                        {{/if}}
+                                    </ul>
+                                </div>
                             </div>
-                            <hr/>
-                            <div class="sidebar-middle-nav">
-                                <ul>
-                                    {{#if user}}
-                                    <li>
-                                        <a href="/auth/logout">
-                                            <p>Logout</p>
-                                        </a>
-                                    </li>
-                                    {{else}}
-                                    <li>
-                                        <a href="/auth/login">
-                                            <p>Login</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/get-started">
-                                            <p>Get Started</p>
-                                        </a>
-                                    </li>
-                                    {{/if}}
-                                </ul>
+                        </div>
+                        <div class="sidebar-bottom">
+                            <div>
+                                <p>Copyright © {{currentYear}} SurveySpark, Inc. All Rights Reserved.</p>
                             </div>
+                            {{!-- <div>
+                                <ul>
+                                    <li>
+                                        <a href="/privacy-policy">Privacy Policy</a>
+                                    </li>
+                                    <span class="bullet">&bull;</span>
+                                    <li>
+                                        <a href="/terms-of-use">Terms of Use</a>
+                                    </li>
+                                </ul>
+                            </div> --}}
                         </div>
-                    </div>
-                    <div class="sidebar-bottom">
-                        <div>
-                            <p>Copyright © {{currentYear}} SurveySpark, Inc. All Rights Reserved.</p>
-                        </div>
-                        {{!-- <div>
-                            <ul>
-                                <li>
-                                    <a href="/privacy-policy">Privacy Policy</a>
-                                </li>
-                                <span class="bullet">&bull;</span>
-                                <li>
-                                    <a href="/terms-of-use">Terms of Use</a>
-                                </li>
-                            </ul>
-                        </div> --}}
                     </div>
                 </div>
-            </div>
-            <div id="overlay"></div>
-    </header>
-    {{/unless}}
-    <main>
-        {{{body}}}
-    </main>
+                <div id="overlay"></div>
+        </header>
+        {{/unless}}
+        <main>
+            {{{body}}}
+        </main>
+    </div>
     {{#unless noHeaderFooter}}
     {{#if user}}
     <footer class="home-footer">

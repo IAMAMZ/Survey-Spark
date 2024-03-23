@@ -1,7 +1,13 @@
-<div class="all-survey-container container mt-5">
+<div class="container mt-5 survey-index">
+    <div class="survey-index-title">
+        <h1 class="mb-4">Take Surveys</h1>
+        <p class="lead mb-4">You have acess to any and all of the surveys below. Enjoy!</p>
+    </div>
+    <hr class="mt-5 mb-5">
+    <div class="all-survey-container container mt-5" style="margin-left: 0; margin-right: 0; margin-bottom: 5px;">
   <div class="row">
     {{#each surveys as |survey|}}
-      <div class="col-md-4">
+      <div class="col">
         <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <h5 class="card-title">{{survey.title}}</h5>
@@ -17,4 +23,5 @@
       </div>
     {{/each}}
   </div>
+</div>
 </div>

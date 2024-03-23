@@ -873,14 +873,14 @@ section {
 .survey-index-title {
     color: #4054ec;
     text-align: left;
-    padding: 3%;
+    /* padding: 3%; */
 }
 .survey-index h1 {
     font-weight: 600;
     font-size: 4em;
     padding: 30px 0;
 }
-.survey-index p {
+.survey-index-title p {
     font-size: 1.5em;
 }
 
@@ -1337,3 +1337,16 @@ section {
     }
 }
   
+/* Fixes the non-bottom positioned footer */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.survey-index {
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 3%;
+    padding-bottom: 5%;
+}

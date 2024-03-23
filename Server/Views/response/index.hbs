@@ -1,4 +1,10 @@
-<div class="container mt-4">
+<div class="container mt-5 survey-index">
+    <div class="survey-index-title">
+        <h1 class="mb-4">Responses</h1>
+        <p class="lead mb-4">Your responses page showcases all the data from your survey responses.</p>
+    </div>
+    <hr class="mt-5 mb-5">
+    <div class="container" style="margin-left: 0; margin-right: 0;">
     {{#each surveysWithResponses}}
         <div class="card mb-4">
             <div class="card-header">
@@ -33,4 +39,5 @@
     {{else}}
         <p>No surveys found.</p>
     {{/each}}
+</div>
 </div>
