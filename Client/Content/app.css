@@ -614,6 +614,10 @@ section {
 }
   
 .about-page .card {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
 }
@@ -651,39 +655,75 @@ section {
 }
   
 .about-page .title {
+    color: #777;
+    font-size: 18px;
+    margin-bottom: 20px;
     color: grey;
 }
   
 .about-page .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: #ffffff;
     background-color: #4054ec;
-    text-align: center;
+    color: white;
+    padding: 10px 20px;
+    border: none;
     cursor: pointer;
-    width: 100%;
-    font-weight: 600;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
 }
+/* Responsive grid for team members */
+.about-page .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.about-page .column {
+    flex: 1;
+    padding: 0 4px;
+}
+
   
 .about-page .button:hover {
     background-color: #2f47d2;
 }
 
 .about-page img {
-    height: 350px;
-    width: auto;
+    width: 100%;
+    height: auto;
+    display: block;
+    height: 370px;
     object-fit: cover;
 }
 
-.meet-the-team-title {
+.about-page .meet-the-team-title {
     text-align: center;
     margin: 50px 0;
     font-size: 3em;
     font-weight: 600;
+}  
+.about-page .card .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-  
+
+/* Add a minimum height to the title to ensure alignment */
+.about-page  .card h2 {
+    min-height: 60px; /* Adjust this based on your actual content */
+    margin-bottom: 15px; /* Ensure consistent spacing below the title */
+}
+
+/* Similarly, you can ensure that descriptions align by giving them a min-height */
+.about-page  .card p {
+    flex-grow: 1;
+}
+
+/* This ensures the button aligns at the bottom */
+.about-page  .card button {
+    margin-top: 20px; /* Adjust as needed for visual spacing */
+}
 @media screen and (max-width: 1188px) {
     .about-page .column {
         width: 100%;
