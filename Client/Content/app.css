@@ -515,47 +515,7 @@ section {
     margin-bottom: 15px; /* Add margin below each list item */
 }
 
-/* Contact Form */
-.contact-form {
-    background: #ffffff;
-    padding: 25px;
-    border: 1px solid #e3e3e3;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    margin: 40px 0;
-}
-.contact-form h2 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    color: #333;
-}
-.contact-form .form-control {
-    border-radius: 20px;
-    border: 1px solid #ced4da;
-}
-.contact-form .btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-.contact-form .btn-primary:hover {
-    background-color: #0056b3;
-}
-.contact-form label {
-    color: #495057;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-.contact-form textarea.form-control {
-    resize: none;
-}
 
-.btn-submit-contact{
-    margin-top: 30px;
-}
 
 /* Survey Services Section */
 .services-section {
@@ -814,26 +774,65 @@ section {
 /* Contact Page */
 
 .contact-section {
-    background-color: #4054ec;
+    background-color: #5a6efa;
+    background: linear-gradient(to right, #4054ec 0%, #5870cb 100%);
     color: #ffffff;
     text-align: center;
-    padding: 5% 3%;
+    padding-top: 60px; 
+    padding-bottom: 60px; 
+    border-bottom: 5px solid #293a7d;
+    height: 56vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
+.contact-section h1, .contact-section p {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
 .contact-section h1 {
-    font-weight: 600;
-    font-size: 4em;
-    padding: 30px 0;
+    font-weight: 700;
+    font-size: 2.5em;
 }
+
 .contact-section p {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
-.contact .row {
-    width: 100% !important;
+
+
+/* Contact Form Styling for Width and Centering */
+.contact .contact-form {
+    background: #f0f4ff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact .col-md-6 {
-    width: 100% !important;
+
+.contact form .form-group {
+    margin-bottom: 20px; 
+}
+
+/* Button Styling */
+.btn-submit-contact {
+    background-color: #293a7d;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    width: 100%; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; 
+}
+
+.btn-submit-contact:hover {
+    background-color: #4054ec;
 }
 
 /* Services Page */
