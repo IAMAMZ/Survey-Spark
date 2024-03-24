@@ -3,6 +3,17 @@
 * {
     font-family: "Rubik", sans-serif;
 }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    line-height: 1.6; 
+    color: #333; 
+}
+a {
+    color: #4054ec;
+    text-decoration: none; 
+}
+
 section {
     padding: 5% 3%;
 }
@@ -13,10 +24,14 @@ section {
     background-color: #ffffff;
 }
 .button {
-    transition: transform 0.3s ease-in-out;;
+    transition: all 0.3s ease; 
+    display: inline-block; 
+    font-size: 1rem;
 }
 .button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+
 }
 
 /* Home Header */
@@ -212,7 +227,10 @@ section {
 /* home-masthead */
 
 .home-masthead {
-    height: 500px;
+    background: linear-gradient(to right, #4054ec 0%, #5870cb 100%); 
+    color: #fff; 
+    padding: 60px 0; 
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -251,11 +269,9 @@ section {
     border: 2px solid #ffffff;
 }
 .home-get-started-btn-main a {
-    text-decoration: none;
+    background-color: #fff; 
     color: #4054ec;
-    font-weight: 600;
-    margin: 0;
-    padding: 0;
+    border: none; 
 }
 .home-watch-demo-btn {
     padding: 8px 12px;
@@ -424,6 +440,30 @@ section {
     font-weight: 600;
     margin: 0;
     padding: 0;
+}
+/*make home responsive*/
+@media (max-width: 768px) {
+    .home-product-stats-container, .home-features-item {
+        flex-direction: column; 
+    }
+
+    .home-masthead, .home-get-started {
+        padding: 30px 0; 
+    }
+
+    .home-features-item img {
+        width: auto; 
+        max-height: 200px; 
+    }
+}
+@media (max-width: 480px) {
+    .home-masthead h1 {
+        font-size: 2em; 
+    }
+
+    .home-product-stat, .home-features-item-details {
+        text-align: center; 
+    }
 }
 
 /* About */
@@ -625,8 +665,9 @@ section {
 .about-page .about-section {
     padding: 8% 4%;
     text-align: center;
+    height: 80vh;
     background-color: #5a6efa; 
-    background-image: linear-gradient(to right, #5564da, #1d2d83); 
+    background: linear-gradient(to right, #4054ec 0%, #5870cb 100%); 
     color: #fff;
     border-radius: 8px; /* Added for rounded corners */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); 
