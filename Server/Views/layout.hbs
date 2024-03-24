@@ -273,64 +273,42 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
         </div>
     </footer>
     {{else}}
-    <footer class="home-footer">
-        <div class="home-footer-container">
-            <div class="home-footer-row">
-                <div class="home-footer-column">
-                    <a href="/">
-                        <img src="/Assets/images/home-footer-logo.svg" alt="SurveySpark footer logo">
-                        <p class="logo-company-memo">a SolveSpark company</p>
-                    </a>
-                </div>
-                <div class="home-footer-column">
-                    <div class="home-login-btn button">
-                        <a href="/auth/login">Log in</a>
-                    </div>
-                    <div class="home-get-started-btn button">
-                        <a href="/get-started">Get started</a>
-                    </div>
-                </div>
-            </div>
-            <div class="home-footer-row home-middle-footer-row">
-                <div class="home-footer-column">
-                    <ul class="home-footer-nav">
-                        <li class="home-footer-nav-heading">SurveySpark</li>
-                        <li>
-                            <a href="/services">Services</a>
-                        </li>          
-                    </ul>
-                </div>
-                <div class="home-footer-column">
-                    <ul class="home-footer-nav">
-                        <li class="home-footer-nav-heading">Support</li>
-                        <li>
-                            <a href="/contact">Contact us</a>
-                        </li>         
-                    </ul>
-                </div>
-                <div class="home-footer-column">
-                    <ul class="home-footer-nav">
-                        <li class="home-footer-nav-heading">Company</li>
-                        <li>
-                            <a href="/about">About us</a>
-                        </li>           
-                    </ul>
-                </div>
-            </div>
-            <div class="home-footer-row">
-                <div class="home-footer-column">
-                    <p>Copyright © 2024 SurveySpark, Inc. All Rights Reserved.</p>
-                </div>
-                <div class="home-footer-column">
-                    <ul class="home-footer-legal-nav">
-                        <li>
-                            <a href="https://github.com/fconiglione/SurveySpark" target="_blank">GitHub</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+   <footer class="home-footer">
+    <div class="home-footer-container">
+        <div class="footer-section logo-section">
+            <a href="/" class="logo-link">
+                <img src="/Assets/images/home-footer-logo.svg" alt="SurveySpark footer logo">
+                <p class="logo-company-memo">a SolveSpark company</p>
+            </a>
         </div>
-    </footer>
+        
+        <nav class="footer-nav">
+            <div class="footer-section">
+                <h4>SurveySpark</h4>
+                <ul>
+                    <li><a href="/services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/contact">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="footer-section legal">
+            <p>Copyright © 2024 SurveySpark, Inc. All Rights Reserved.</p>
+            <a href="https://github.com/fconiglione/SurveySpark" target="_blank">GitHub</a>
+        </div>
+    </div>
+</footer>
     {{/if}}
     {{/unless}}
     <!-- Script Section -->
