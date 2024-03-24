@@ -623,10 +623,13 @@ section {
 }
   
 .about-page .about-section {
-    padding: 5% 3%;
+    padding: 8% 4%;
     text-align: center;
-    background-color: #4054ec;
-    color: white;
+    background-color: #5a6efa; 
+    background-image: linear-gradient(to right, #5564da, #1d2d83); 
+    color: #fff;
+    border-radius: 8px; /* Added for rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); 
 }
   
 .about-page .container {
@@ -634,12 +637,16 @@ section {
 }
 
 .about-section h1 {
-    font-weight: 600;
-    font-size: 4em;
-    padding: 30px 0;
+    font-weight: 700;
+    font-size: 3em; 
+    padding: 40px 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .about-section p {
-    font-size: 1.5em;
+    font-size: 1.2em; 
+    margin: 20px auto; 
+    max-width: 80%; 
+    line-height: 1.5; 
 }
   
 .about-page .container::after, .about-page .row::after {
@@ -662,15 +669,17 @@ section {
 }
   
 .about-page .button {
-    background-color: #4054ec;
+    background-color: #4c63d2; 
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px; 
     border: none;
     cursor: pointer;
     font-weight: bold;
-    display: block;
+    display: inline-block; 
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease; 
+    border-radius: 5px; 
 }
 /* Responsive grid for team members */
 .about-page .row {
@@ -686,7 +695,7 @@ section {
 
   
 .about-page .button:hover {
-    background-color: #2f47d2;
+    background-color:  #3a4eb8;
 }
 
 .about-page img {
@@ -709,20 +718,20 @@ section {
     height: 100%;
 }
 
-/* Add a minimum height to the title to ensure alignment */
+
 .about-page  .card h2 {
-    min-height: 60px; /* Adjust this based on your actual content */
-    margin-bottom: 15px; /* Ensure consistent spacing below the title */
+    min-height: 60px; 
+    margin-bottom: 15px; 
 }
 
-/* Similarly, you can ensure that descriptions align by giving them a min-height */
+
 .about-page  .card p {
     flex-grow: 1;
 }
 
-/* This ensures the button aligns at the bottom */
+
 .about-page  .card button {
-    margin-top: 20px; /* Adjust as needed for visual spacing */
+    margin-top: 20px; 
 }
 @media screen and (max-width: 1188px) {
     .about-page .column {
