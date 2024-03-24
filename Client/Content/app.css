@@ -1409,68 +1409,60 @@ section {
     border-color: #005cbf;
 }
 /* Docs Page */
-.docs{
+.docs {
     text-align: center;
-}
-.docs-intro{
-    /* styles for the element with class "docs" */
-    padding: 30px;
-}
-.docs-intro h1{
-    /* styles for the element with class "docs" */
-    font-size: 50px;
-    color: #0000ff;
-    font-weight: bold;
-}
-.docs-intro p{
-    /* styles for the element with class "docs" */
-    font-size: 20px;
-    color: #000000;
-    margin-top: 30px;
-}
-.docs-content{
-    /* styles for the element with class "docs" */
-    padding: 30px;
+    max-width: 1000px; 
+    margin: auto; 
+    background-color: #8093c6; 
+    padding: 20px 0; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.docs-content h2{
-    /* styles for the element with class "docs" */
-    font-size: 30px;
-    color: #0000ff;
-    font-weight: bold;
-    margin-top: 30px;
+.docs-intro, .docs-content {
+    padding: 20px;
+    background-color: #ffffff; 
+    margin: 20px; 
+    border-radius: 8px; 
 }
-.docs-content p{
-    /* styles for the element with class "docs" */
-    font-size: 20px;
-    color: #000000;
-    margin-top: 30px;
-    font-weight: bold;
+
+.docs-intro h1, .docs-content h2 {
+    color: #4054ec; 
 }
-.docs-content ul{
-    /* styles for the element with class "docs" */
+
+.docs-intro p, .docs-content p, .docs-content ul li {
+    text-align: left;
+    font-size: 18px;
+    color: #333333; 
+    padding: 0 10%; 
+}
+
+.docs-content ul {
     list-style: decimal inside;
-    color: #000000;
+    margin-left: 20px;
 }
-.docs-content ul li{
-    /* styles for the element with class "docs" */
-    padding: 15px;
-    font-size: 20px;
-}
-/* Responsive Styles */
+
+/* Adjustments for smaller screens to ensure responsiveness */
 @media screen and (max-width: 768px) {
-    .docs h1 {
-        font-size: 40px;
-    }
-
-    .docs h2 {
-        font-size: 24px;
-    }
-
-    .docs p {
-        font-size: 18px;
+    .docs h1, .docs h2, .docs p {
+        padding: 0 5%; 
     }
 }
+
+@media screen and (max-width: 480px) {
+    .docs-intro, .docs-content {
+        padding: 15px;
+    }
+
+    .docs h1 {
+        font-size: 30px;
+    }
+
+    .docs h2, .docs p, .docs ul {
+        font-size: 16px; 
+    }
+}
+
 
 @media screen and (max-width: 480px) {
     .docs-intro, .docs-content {
