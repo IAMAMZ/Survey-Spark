@@ -838,20 +838,88 @@ section {
 
 /* Services Page */
 
-.services-section:first-child {
-    background-color: #4054ec !important;
+
+.services-masthead .services-section {
+    background-color: #5a6efa; 
+    background: linear-gradient(to right, #4054ec 0%, #5870cb 100%); 
     color: #ffffff;
     text-align: center;
-    padding: 5% 3%;
+    padding: 60px 3% 80px; 
+    height: 80vh;
 }
+
 .services-section h1 {
-    font-weight: 600;
-    font-size: 4em;
-    padding: 30px 0;
+    font-weight: 700; 
+    font-size: 3.5em; 
+    margin-bottom: 30px; 
 }
+
 .services-section p {
-    font-size: 1.5em;
+    font-size: 1.2em; 
+    max-width: 800px; 
+    margin: 0 auto; 
 }
+
+/* Service Details */
+.container.services-section {
+    background-color: #f8f9fa; 
+    padding: 50px 3%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: -40px; 
+}
+
+.service-title {
+    color: #333; 
+    font-size: 2em; 
+    margin-bottom: 20px; 
+}
+
+.service-intro {
+    font-size: 1.1em; 
+    color: #666; 
+    margin-bottom: 30px; 
+}
+
+.feature-list {
+    list-style-type: none; 
+    padding: 0;
+    margin-bottom: 40px; 
+}
+
+.feature-list li {
+    font-size: 1em; 
+    margin-bottom: 10px; 
+    line-height: 1.6; 
+    position: relative; 
+    padding-left: 30px; 
+}
+
+.feature-list li:before {
+    content: ''; 
+    background-color: #4054ec; 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    position: absolute; 
+    left: 0;
+    top: 10px; 
+}
+
+.cta-button {
+    display: inline-block; 
+    background-color: #4054ec; 
+    color: #fff;
+    padding: 10px 30px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #293a7d;
+}
+
 
 /* Login page */
 
