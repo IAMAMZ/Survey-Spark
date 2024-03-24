@@ -75,9 +75,15 @@ Students: Francesco Coniglione (1206780), Miran Qarachatani (1197590), Hans Uram
             <div class="home-header-container">
                 <div class="home-header-column">
                     <div>
-                        <a href="/">
+                        {{#if user}}
+                         <a href="/survey">
                             <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
                         </a>
+                         {{else}}
+                         <a href="/">
+                            <img src="/Assets/images/home-header-logo.svg" alt="SurveySpark header logo">
+                        </a>
+                          {{/if}}
                     </div>
                     <div>
                         <ul class="home-header-nav-bar">
