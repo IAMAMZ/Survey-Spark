@@ -80,39 +80,14 @@ const deleteQuestion = async (req, res, next) => {
 const updateSurveyQuestion = async (req, res, next) => {
   try {
     // Find the survey by ID
-    const section = await Section.findById(req.params.sectionId)
-    .populate("questions")
-    .exec();
 
+    console.log(req.params.sectionId);
+    await Question.findByIdAndUpdate(req.params.questionId,req.body)
+  
 
-    // Find the question within the survey's questions array by its ID
-    let question = section.questions.find(
-      (question) => question._id.toString() === req.params.questionId
-    );
-
-    // Extract updated question details from request body
-    const { text, type, options } = req.body;
-
-    // Update the question details
-    question.text = text;
-    question.type = type;
-
-    // If the question type is 'multiple-choice', parse the options
-    if (type === "multiple-choice" && options) {
-      question.options = options.split(",").map((option) => ({
-        text: option.trim(),
-        value: option.trim(),
-      }));
-    } else {
-      // If the question type is not 'multiple-choice', clear the options array
-      question.options = [];
-    }
-
-    // Save the updated section
-    await section.save();
 
     // Redirect back to the survey details page
-    res.redirect(`/survey/${survey._id}`);
+    res.redirect(`/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`);
   } catch (error) {
     console.error("Error updating question:", error);
     res.status(500).send("Error updating question");
@@ -129,6 +104,7 @@ const displayQuestionEditForm = async (req, res, next) => {
     (q) => q._id.toString() === req.params.questionId
   );
 
+  console.log("HERE IS THE QUEATON " , question);
 
   // Render the edit question form
   res.render("question/edit", {
