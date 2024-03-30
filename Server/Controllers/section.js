@@ -2,7 +2,7 @@ const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
 const Question = require("../Models/Question");
 const User = require('../Models/User');
-
+const mongoose = require("mongoose");
 
 const sectionController = {
   displaySectionsInSurvey: async (req, res) => {
@@ -141,14 +141,18 @@ const sectionController = {
 
   // Display form to edit an existing section
   displaySectionEditForm: async (req, res) => {
-    const { sectionId } = req.params;
+    const { surveyId,sectionId } = req.params;
     try {
-      const section = await Section.findById(sectionId);
-      if (!section) {
+      const survey = await Survey.findById(surveyId).populate("sections");
+     
+      const allSections = survey.sections;
+      // find the selected section
+      const selectedSection = allSections.find(section=>section._id == sectionId);
+      if (!allSections) {
         return res.status(404).send("Section not found");
       }
       // Render edit form with section data
-      res.render("section/edit", { section, User: req.User });
+      res.render("section/edit", { section:selectedSection,allSections, User: req.User });
     } catch (error) {
       res.status(500).send(error.toString());
     }
@@ -156,7 +160,7 @@ const sectionController = {
 
   // Update an existing section in a survey
   updateSurveySection: async (req, res) => {
-    const { sectionId } = req.params;
+    const { surveyId, sectionId } = req.params;
     const { title, description, nextSection } = req.body;
     
     // Prepare the update object, excluding nextSection initially
@@ -164,6 +168,8 @@ const sectionController = {
       title,
       description,
     };
+
+    console.log("we created update")
     
     // Conditionally add nextSection if it's not empty and is a valid ObjectId
     if (nextSection && mongoose.Types.ObjectId.isValid(nextSection)) {
@@ -172,13 +178,14 @@ const sectionController = {
       // If nextSection is empty or invalid, ensure it is unset from the document--> we could refactor later to make next seciton empty by default
       update.$unset = { nextSection: "" };
     }
-  
+      console.log("HERE IS THE LEVEL WHERE I REACHED NO ERROR ")
+      console.log(req.body._id);
       const updatedSection = await Section.findByIdAndUpdate(sectionId, update, { new: true });
       if (!updatedSection) {
         return res.status(404).send("Section not found");
       }
       // Redirect or respond
-      res.redirect(`/survey/{${sectionId}/sections`); 
+      res.redirect(`/survey/${surveyId}/sections`); 
    
   },
 };

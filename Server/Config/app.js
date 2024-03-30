@@ -63,6 +63,7 @@ app.set("view engine", "hbs");
 hbs.registerHelper("ifCond", function (v1, operator, v2, options) {
   switch (operator) {
     case "===":
+    case "eq":
       return v1 === v2 ? options.fn(this) : options.inverse(this);
     case "!==":
       return v1 !== v2 ? options.fn(this) : options.inverse(this);

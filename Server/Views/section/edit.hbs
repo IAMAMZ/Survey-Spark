@@ -20,8 +20,8 @@
             <label for="nextSection" class="form-label">Next Section:</label>
             <select class="form-select" id="nextSection" name="nextSection">
                 <option value="">Continue to Next Section by Order</option>
-                {{#each sections}}
-                <option value="{{this._id}}" {{#if (eq this._id section.nextSection)}}selected{{/if}}>{{this.title}}</option>
+                {{#each allSections}}
+                <option value="{{this._id}}" {{#ifCond this._id '===' @root.section.nextSection}}selected{{/ifCond}}>{{this.title}}</option>
                 {{/each}}
             </select>
         </div>
