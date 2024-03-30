@@ -835,6 +835,16 @@ section {
     background-color: #4054ec;
 }
 
+.g-recaptcha{
+    margin-bottom: 30px;
+}
+.contact-error{
+    margin:0 auto;
+    margin-top: 20px;
+    width:60%;
+
+}
+
 /* Services Page */
 
 

@@ -1,10 +1,20 @@
 const sgMail = require("@sendgrid/mail");
 const dotenv = require("dotenv");
+const axios = require("axios");
 dotenv.config();
 
 const sendEmail = async (req, res, next) => {
   const { name, email, message } = req.body;
 
+  const token = req.body['g-recaptcha-response'];
+
+  const googleVerifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_CAPTCHA}&response=${token}`;
+
+  try{
+
+    const response = await axios.post(googleVerifyURL);
+
+    if(response.data.success){
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: [
@@ -32,10 +42,33 @@ const sendEmail = async (req, res, next) => {
     .catch((error) => {
       console.error(error);
     });
+
+
   res.render("content/contactSent", {
     title: "Thank you",
     page: "contactSent",
   });
+
+
+    }
+    else{
+      // turn them back to contact with captcha error msg
+      res.render("content/contact",{
+        error:`Captcha verification failed, please make sure to click " I'm not a robot " `
+      })
+    }
+  }
+  catch(e){
+
+    console.log(e.message);
+
+    res.render("content/contact",{
+      error:"Something went wrong, please try again later "
+    })
+
+  }
+
+
 };
 
 module.exports = {
