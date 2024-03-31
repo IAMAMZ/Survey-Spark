@@ -1556,6 +1556,100 @@ footer ul{
     flex-wrap: wrap;
 }
 
+/* Survey Index Container Styling */
+
+.survey-index .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.survey-index .survey-index-title h1 {
+    color: #333;
+    font-size: 2.5rem; 
+    text-align: center; 
+}
+
+.survey-index .survey-index-title p.lead {
+    color: #555; 
+    text-align: center; 
+    font-size: 1.2rem;
+}
+
+/* Improve the visual separation */
+.survey-index hr {
+    border-top: 2px solid #bbb; /* Make the horizontal rule more pronounced */
+}
+
+
+/* Card Styling */
+.survey-index .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin:0 auto;
+    margin-top: 20px;
+}
+
+.survey-index .card-body {
+    padding: 1.5rem; 
+}
+
+.survey-index .card-title {
+    color: #007bff; 
+    margin-bottom: 1rem; 
+}
+
+.survey-index .card-text {
+    font-size: 1rem; 
+    color: #666; 
+}
+
+/* Button Styling */
+.survey-index .btn-outline-secondary {
+    border-color: #007bff;
+    color: #007bff; 
+}
+
+.survey-index .btn-outline-secondary:hover {
+    background-color: #007bff; 
+    color: #fff;
+}
+.survey-index .row {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    width: 100%;
+}
+
+.survey-index .col {
+    display: flex;
+    flex: 1 0 200px; 
+    margin-bottom: 1rem; 
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card equal height */
+.survey-index .card {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .survey-index .row {
+        flex-direction: column; 
+    }
+    .survey-index .col {
+        max-width: 100%; 
+        margin-bottom: 1rem; 
+    }
+}
+
+
 
 @media (max-width: 768px) {
     footer.home-footer {

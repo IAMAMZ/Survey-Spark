@@ -2,6 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
+let isAuthenticated = require('../Config/authCheck');
+
 const takeSurveyController = require("../Controllers/takeSurvey");
 router.get("/complete", takeSurveyController.renderSurveyComplete);
 

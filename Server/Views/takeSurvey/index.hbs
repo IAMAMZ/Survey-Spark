@@ -1,10 +1,14 @@
 <div class="container mt-5 survey-index">
     <div class="survey-index-title">
         <h1 class="mb-4">Take Surveys</h1>
+        {{#if user}}
         <p class="lead mb-4">You have acess to any and all of the surveys below. Enjoy!</p>
+        {{else}}
+        <p class="lead mb-4">Please login or register to start answering surveys</p>
+        {{/if}}
     </div>
     <hr class="mt-5 mb-5">
-    <div class="all-survey-container container mt-5" style="margin-left: 0; margin-right: 0; margin-bottom: 5px;">
+  <div class="all-survey-container container mt-5" style="margin-left: 0; margin-right: 0; margin-bottom: 5px;">
   <div class="row">
     {{#each surveys as |survey|}}
       <div class="col">
@@ -12,12 +16,14 @@
           <div class="card-body">
             <h5 class="card-title">{{survey.title}}</h5>
             <p class="card-text">{{survey.description}}</p>
+
+            {{#if @root.user}}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="/takeSurvey/{{survey._id}}" class="btn btn-sm btn-outline-secondary">Take Survey</a>
               </div>
-              <small class="text-muted">9 mins</small>
             </div>
+            {{/if}}
           </div>
         </div>
       </div>
