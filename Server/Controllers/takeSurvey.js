@@ -29,8 +29,7 @@ const takeSurvey = async (req, res, next) => {
     );
 
     if (!sectionWithOrderOne) {
-      // todo : handle when not found maybe redirect to another not found page
-      redirect("/");
+      res.render("takeSurvey/noQuestionsfound");
       return;
     }
 
@@ -40,8 +39,8 @@ const takeSurvey = async (req, res, next) => {
     // Redirect to the specific section of the survey
     res.redirect(`/takeSurvey/${surveyId}/sections/${sectionId}`);
   } catch (error) {
-    console.error("Error fetching survey:", error);
-    next(error); // Pass the error to next
+    res.render("takeSurvey/noQuestionsfound");
+    return;
   }
 };
 
@@ -52,6 +51,13 @@ const displaySection = async (req, res, next) => {
   const section = await Section.findById(sectionId)
     .populate("questions")
     .exec();
+    console.log("SECTION ", section);
+    console.log("SURVEY QUESTIONS " , section.questions)
+
+    if(!section.questions){
+       res.render("takeSurvey/noQuestionsfound");
+       return;
+    }
 
   res.render("takeSurvey/sectionQuestionRenderer", {
     section: section,
