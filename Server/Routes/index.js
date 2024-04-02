@@ -30,6 +30,12 @@ router.get("/get-started", IndexController.DisplayGetStarted);
 /* GET Docs Page */
 router.get("/docs", IndexController.DisplayDocs);
 
+/* GET Privacy Policy Page */
+router.get("/privacy-policy", IndexController.DisplayPrivacyPolicy);
+
+/* GET Terms of Use Page Page */
+router.get("/terms-of-use", IndexController.DisplayTermsOfUse);
+
 router.use((req, res, next) => {
   IndexController.DisplayNotFound(req, res, next);
 });
