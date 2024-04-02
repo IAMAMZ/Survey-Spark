@@ -38,6 +38,10 @@ function DisplayDocs(req, res, next) {
   res.render("content/docs", { title: "Docs", page: "docs", User: req.User });
 }
 
+function DisplayPrivacyPolicy(req, res, next) {
+  res.render("content/privacy-policy", { title: "Privacy Policy", page: "privacy-policy", User: req.User });
+}
+
 module.exports = {
   DisplayHome: DisplayHome,
   DisplayAbout: DisplayAbout,
@@ -45,5 +49,6 @@ module.exports = {
   DisplayServices: DisplayServices,
   DisplayNotFound: DisplayNotFound,
   DisplayGetStarted: DisplayGetStarted,
-  DisplayDocs: DisplayDocs
+  DisplayDocs: DisplayDocs,
+  DisplayPrivacyPolicy: DisplayPrivacyPolicy
 };
