@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-let isAuthenticated = require('../Config/authCheck');
+let isAuthenticated = require("../Config/authCheck");
 
 const questionController = require("../Controllers/question");
 
@@ -48,5 +48,11 @@ router.post(
   "/:surveyId/sections/:sectionId/questions/:questionId/options/add",
   isAuthenticated,
   questionController.saveOption
+);
+
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/:optionId/delete",
+  isAuthenticated,
+  questionController.deleteOption
 );
 module.exports = router;

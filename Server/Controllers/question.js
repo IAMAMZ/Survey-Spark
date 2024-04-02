@@ -2,7 +2,7 @@
 const Survey = require("../Models/Survey");
 const Section = require("../Models/Section");
 const Question = require("../Models/Question");
-const User = require('../Models/User');
+const User = require("../Models/User");
 
 const displayQuestionCreateForm = async (req, res, next) => {
   res.render("question/create", {
@@ -56,10 +56,9 @@ const deleteQuestion = async (req, res, next) => {
   try {
     // Find the section parent
     const section = await Section.findById(req.params.sectionId)
-    .populate("questions")
-    .exec();
+      .populate("questions")
+      .exec();
 
-  
     // Remove the question from the section's questions array
     // Filter out the question to delete by its ID
     section.questions = section.questions.filter(
@@ -70,7 +69,9 @@ const deleteQuestion = async (req, res, next) => {
     await section.save();
 
     // Redirect back to the survey details page,
-    res.redirect(`/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`);
+    res.redirect(
+      `/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`
+    );
   } catch (error) {
     console.error("Error deleting question:", error);
     res.status(500).send("Error deleting the question");
@@ -82,12 +83,12 @@ const updateSurveyQuestion = async (req, res, next) => {
     // Find the survey by ID
 
     console.log(req.params.sectionId);
-    await Question.findByIdAndUpdate(req.params.questionId,req.body)
-  
-
+    await Question.findByIdAndUpdate(req.params.questionId, req.body);
 
     // Redirect back to the survey details page
-    res.redirect(`/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`);
+    res.redirect(
+      `/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questionsPortal`
+    );
   } catch (error) {
     console.error("Error updating question:", error);
     res.status(500).send("Error updating question");
@@ -97,14 +98,14 @@ const updateSurveyQuestion = async (req, res, next) => {
 const displayQuestionEditForm = async (req, res, next) => {
   // Retrieve the survey and question details
   const section = await Section.findById(req.params.sectionId)
-  .populate("questions")
-  .exec();
+    .populate("questions")
+    .exec();
 
   let question = section.questions.find(
     (q) => q._id.toString() === req.params.questionId
   );
 
-  console.log("HERE IS THE QUEATON " , question);
+  console.log("HERE IS THE QUEATON ", question);
 
   // Render the edit question form
   res.render("question/edit", {
@@ -140,7 +141,7 @@ const displayOptionCreateForm = async (req, res, next) => {
 
   res.render("question/option/create", {
     surveySections: surveySections.sections,
-    user: req.user
+    user: req.user,
   });
 };
 
@@ -170,6 +171,34 @@ const saveOption = async (req, res, next) => {
     res.status(500).send("Error saving option");
   }
 };
+
+const deleteOption = async (req, res, next) => {
+  try {
+    // Find the question parent
+
+    const question = await Question.findById(req.params.questionId)
+      .populate("options")
+      .exec();
+
+    // Remove the option from the quesion's options array
+    // Filter out the option to delete by its ID
+    question.options = question.options.filter(
+      (option) => option._id.toString() !== req.params.optionId
+    );
+
+    // Save the updated question
+    await question.save();
+
+    // Redirect back to the survey details page,
+    res.redirect(
+      `/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questions/${req.params.questionId}/options`
+    );
+  } catch (error) {
+    console.error("Error deleting question:", error);
+    res.status(500).send("Error deleting the question");
+  }
+};
+
 module.exports = {
   displayQuestionCreateForm,
   saveSurveyQuestion,
@@ -179,4 +208,5 @@ module.exports = {
   displayQuestionOptionsPortal,
   displayOptionCreateForm,
   saveOption,
+  deleteOption,
 };
