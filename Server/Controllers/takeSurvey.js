@@ -19,7 +19,7 @@ const takeSurvey = async (req, res, next) => {
     const survey = await Survey.findById(surveyId).populate("sections").exec();
 
     if (!survey) {
-      res.status(404).send("Survey not found");
+      res.render("takeSurvey/noQuestionsfound");
       return;
     }
 

@@ -55,4 +55,10 @@ router.get(
   isAuthenticated,
   questionController.deleteOption
 );
+
+router.get(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/:optionId/edit",
+  isAuthenticated,
+  questionController.displayOptionEditForm
+);
 module.exports = router;

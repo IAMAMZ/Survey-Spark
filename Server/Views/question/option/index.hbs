@@ -17,7 +17,7 @@
                     <td>{{value}}</td>
                     <td>{{#if nextSection}}{{nextSection.title}}{{else}}N/A{{/if}}</td>
                     <td>
-                        <a href="{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="options/{{_id}}/edit" class="btn btn-sm btn-secondary">Edit</a>
                         <a  href="options/{{_id}}/delete" class="btn btn-sm btn-danger" onclick="confirmDelete('{{../../surveyId}}', '{{../questionId}}', '{{_id}}')">Delete</a>
                     </td>
                 </tr>

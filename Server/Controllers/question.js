@@ -199,6 +199,13 @@ const deleteOption = async (req, res, next) => {
   }
 };
 
+const displayOptionEditForm = async (req,res,next)=>{
+
+  res.render("question/option/Edit", {
+    user: req.user,
+  });
+}
+
 module.exports = {
   displayQuestionCreateForm,
   saveSurveyQuestion,
@@ -209,4 +216,5 @@ module.exports = {
   displayOptionCreateForm,
   saveOption,
   deleteOption,
+  displayOptionEditForm
 };
