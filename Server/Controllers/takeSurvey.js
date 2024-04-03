@@ -19,7 +19,7 @@ const takeSurvey = async (req, res, next) => {
     const survey = await Survey.findById(surveyId).populate("sections").exec();
 
     if (!survey) {
-      res.render("takeSurvey/noQuestionsfound");
+      res.render("takeSurvey/noQuestionsfound",{user:req.user});
       return;
     }
 
@@ -29,7 +29,7 @@ const takeSurvey = async (req, res, next) => {
     );
 
     if (!sectionWithOrderOne) {
-      res.render("takeSurvey/noQuestionsfound");
+      res.render("takeSurvey/noQuestionsfound",{user:req.user});
       return;
     }
 
@@ -39,7 +39,7 @@ const takeSurvey = async (req, res, next) => {
     // Redirect to the specific section of the survey
     res.redirect(`/takeSurvey/${surveyId}/sections/${sectionId}`);
   } catch (error) {
-    res.render("takeSurvey/noQuestionsfound");
+    res.render("takeSurvey/noQuestionsfound",{user:req.user});
     return;
   }
 };
@@ -55,7 +55,7 @@ const displaySection = async (req, res, next) => {
     console.log("SURVEY QUESTIONS " , section.questions)
 
     if(!section.questions){
-       res.render("takeSurvey/noQuestionsfound");
+       res.render("takeSurvey/noQuestionsfound",{user:req.user});
        return;
     }
 
@@ -98,10 +98,7 @@ const handleResponse = async (req, res, next) => {
 
     await response.save();
   }
-  console.log("________________________>____________");
-  console.log("ID OF NEXt " + idOfNextSection);
-  console.log("ID OF SECTION  " + sectionId);
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
   // if options don't lead to next section then go by next section of survey
   const currentSection = await Section.findById(sectionId);
 
@@ -111,8 +108,7 @@ const handleResponse = async (req, res, next) => {
   // if all fails fo by order
   if (!idOfNextSection) {
     const currentOrder = currentSection.order;
-    console.log("((DLSDJF ");
-    console.log(currentOrder);
+ 
     const nextOrder = currentOrder + 1; // Calculate the next order
 
     console.log("NEX ORDER IS ", nextOrder);
@@ -123,9 +119,6 @@ const handleResponse = async (req, res, next) => {
       order: nextOrder,
     });
 
-    console.log("SURVEY ID IS ", surveyId);
-
-    console.log("NEXT SECTIONIS ", nextSection);
 
     if (nextSection) {
       // If a next section is found, use its ID for redirection
@@ -143,8 +136,7 @@ const handleResponse = async (req, res, next) => {
 };
 
 const renderSurveyComplete = async (req, res, next) => {
-  console.log("<<<<<<<<<<<<_>>>>>>>>>>>>>>>>");
-  res.render("takeSurvey/surveyComplete");
+  res.render("takeSurvey/surveyComplete",{user:req.user});
 };
 
 module.exports = {

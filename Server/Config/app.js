@@ -12,8 +12,10 @@ const passport = require('passport');
 const session = require('express-session');
 const createMemoryStore = require('memorystore');
 
+// to prevent memory leaks
 const MemoryStore = createMemoryStore(session);
 
+// if not in production get dotenv 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -40,20 +42,8 @@ const takeSurveyRouter = require("../Routes/takeSurvey.js");
 const responseRouter = require("../Routes/response.js");
 const app = express();
 
-// link to .env file if not in production mode
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
 
-// db connection - must be after express app instantiated
-mongoose
-  .connect(process.env.MONGO_DB_URI, {})
-  .then((res) => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.log(`Connection failure: ${err}`);
-  });
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "../Views"));
