@@ -228,6 +228,33 @@ const displayOptionEditForm = async (req, res, next) => {
     console.error("Error displaying option edit form:", error);
   }
 }
+const updateOption = async (req, res, next) => {
+  try {
+    const { questionId, optionId } = req.params;
+    const { text, value, nextSection } = req.body;
+
+    // Retrieve the question
+    const question = await Question.findById(questionId);
+   
+
+    // Find the option to update
+    const optionToUpdate = question.options.find(option => option._id.toString() === optionId);
+  
+
+    // Update the option fields
+    optionToUpdate.text = text;
+    optionToUpdate.value = value;
+    optionToUpdate.nextSection = nextSection || undefined; 
+
+    // Save the updated question
+    await question.save();
+
+    // Redirect 
+    res.redirect(`/survey/${req.params.surveyId}/sections/${req.params.sectionId}/questions/${questionId}/options`);
+  } catch (error) {
+    console.error("Error updating option:", error);
+  }
+};
 
 module.exports = {
   displayQuestionCreateForm,
@@ -239,5 +266,6 @@ module.exports = {
   displayOptionCreateForm,
   saveOption,
   deleteOption,
-  displayOptionEditForm
+  displayOptionEditForm,
+  updateOption
 };

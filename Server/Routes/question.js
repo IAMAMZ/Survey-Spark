@@ -61,4 +61,10 @@ router.get(
   isAuthenticated,
   questionController.displayOptionEditForm
 );
+
+router.post(
+  "/:surveyId/sections/:sectionId/questions/:questionId/options/:optionId/edit",
+  isAuthenticated,
+  questionController.updateOption
+);
 module.exports = router;
