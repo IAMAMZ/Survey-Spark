@@ -199,11 +199,34 @@ const deleteOption = async (req, res, next) => {
   }
 };
 
-const displayOptionEditForm = async (req,res,next)=>{
+const displayOptionEditForm = async (req, res, next) => {
+  const { surveyId, optionId, questionId } = req.params;
+  try {
+    // Fetch the survey with all sections populated
+    const survey = await Survey.findById(surveyId).populate("sections");
+    const allSections = survey.sections;
 
-  res.render("question/option/Edit", {
-    user: req.user,
-  });
+    // Find the question to which the option belongs
+    const question = await Question.findById(questionId).populate({
+      path: 'options.nextSection',
+      model: 'Section' 
+    });
+
+    // Find the specific option to edit. 
+
+    const optionToEdit = question.options.find(option => option._id.toString() === optionId);
+
+    console.log(optionToEdit);
+
+    // Render the edit option form with the found option and all sections for the dropdown
+    res.render("question/option/edit", {
+      user: req.user,
+      allSections: allSections,
+      option: optionToEdit, 
+    });
+  } catch (error) {
+    console.error("Error displaying option edit form:", error);
+  }
 }
 
 module.exports = {
