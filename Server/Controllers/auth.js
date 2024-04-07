@@ -1,5 +1,6 @@
 let User = require('../Models/User');
 const passport = require('passport');
+const crypto = require('crypto');
 
 let displayRegisterForm = (req, res, next) => {
     let messages = req.session.messages || [];
@@ -94,7 +95,17 @@ let handleGoogleAuthenticationCallback = (req, res, next) => {
     })(req, res, next);
 };
 
+const displayForgotPasswordForm = async (req,res)=>{
+
+    res.render('auth/forgotPassword', { 
+        title: 'Password reset', 
+    });
+
+}
+
 // make public
 module.exports = {
-    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout, initiateGoogleAuthentication, handleGoogleAuthenticationCallback
+    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout,
+     initiateGoogleAuthentication, handleGoogleAuthenticationCallback,
+     displayForgotPasswordForm
 };

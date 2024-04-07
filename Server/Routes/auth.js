@@ -43,4 +43,9 @@ router.get('/google/callback', (req, res, next) => {
     authController.handleGoogleAuthenticationCallback(req, res, next);
 });
 
+router.get('/passwordreset',authController.displayForgotPasswordForm)
+router.post('/auth/forgot-password', async (req, res) => {
+    
+  });
+
 module.exports = router;

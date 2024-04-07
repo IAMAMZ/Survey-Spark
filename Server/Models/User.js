@@ -17,6 +17,9 @@ const userSchema = new Schema({
   responses: [{ type: Schema.Types.ObjectId, ref: "Response" }], // to query responses per user easily (otherwise you have to query response collection)
   googleId: String,
   googleToken: String,
+resetPasswordToken: String,
+resetPasswordExpires: Date,
+
 });
 
 userSchema.plugin(plm);
