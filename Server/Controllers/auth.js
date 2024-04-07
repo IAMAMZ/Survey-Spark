@@ -1,5 +1,8 @@
 let User = require('../Models/User');
 const passport = require('passport');
+const crypto = require('crypto');
+const sgMail = require("@sendgrid/mail");
+const axios = require("axios");
 
 let displayRegisterForm = (req, res, next) => {
     let messages = req.session.messages || [];
@@ -13,7 +16,7 @@ let displayRegisterForm = (req, res, next) => {
 };
 
 let submitRegister = (req, res, next) => {
-    User.register(new User({ username: req.body.username }), req.body.password, (err, newUser) => {
+    User.register(new User({ username: req.body.username,email:req.body.username }), req.body.password, (err, newUser) => {
         if (err) {
             return res.render('auth/register', { messages: err, noHeaderFooter: true });
         }
@@ -94,7 +97,141 @@ let handleGoogleAuthenticationCallback = (req, res, next) => {
     })(req, res, next);
 };
 
+const displayForgotPasswordForm = async (req,res)=>{
+
+        res.render('auth/forgotPassword', { 
+            title: 'Password reset', 
+            messege:"Plase make sure you click CAPTCHA"
+        });
+    
+}
+const handleForgotPassword = async (req,res)=>{
+
+
+    const token = req.body['g-recaptcha-response'];
+
+    const googleVerifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_CAPTCHA}&response=${token}`;
+    const response = await axios.post(googleVerifyURL);
+
+    if(response.data.success){
+ 
+    
+    const { email } = req.body;
+
+    console.log(email);
+    const user = await User.findOne({ email: email });
+    if (!user) {
+        res.render('auth/forgotPassword', { 
+            title: 'Password reset', 
+            message:'This account does not exist'
+        });
+        return;
+    }
+  
+    const token = crypto.randomBytes(20).toString('hex');
+  
+    console.log(token);
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiary
+  
+    await user.save();
+  
+    const resetURL = `http://${req.headers.host}/auth/reset-password/${token}`;
+  
+    const msg = {
+      to: email,
+      from: 'solvesparktechnologies@gmail.com',
+      subject: 'Password Reset',
+      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n
+             Please click on the following link, or paste this into your browser to complete the process:\n\n
+             ${resetURL}\n\n
+             If you did not request this, please ignore this email and your password will remain unchanged.\n`
+    };
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  
+    sgMail.send(msg).then(() => {
+      console.log('Email sent');
+      res.render('auth/passresetmsg', { 
+        title: 'Password reset', 
+    });
+      
+    }).catch((error) => {
+      console.error(error);
+      res.render('auth/forgotPassword', { 
+        title: 'Password reset', 
+        messege:"something went wrong"
+    });
+    });
+}
+else{
+    res.render('auth/forgotPassword', { 
+        title: 'Password reset', 
+        message:`Please check i'm not robot recaptcha`
+    }); 
+}
+}
+
+const displayPasswordResetForm = async (req,res)=>{
+    const token = req.params.token;
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+        console.log('Password reset token is invalid or expired');
+        return res.redirect('/auth/login');
+    }
+
+    res.render('auth/resetPassword', { 
+        title: 'Reset Password', 
+        token: token
+    });
+
+}
+const processPasswordLink = async (req, res) => {
+        const token = req.params.token;
+        const user = await User.findOne({
+            resetPasswordToken: token,
+            resetPasswordExpires: { $gt: Date.now() }
+        });
+    
+        if (!user) {
+            console.log('Password reset token is invalid or has expired');
+            return res.redirect('/auth/login');
+        }
+    
+        // set their password if all is valid
+        user.setPassword(req.body.password, async (err) => {
+            if (err) {
+                console.log('Error setting new password', err);
+                return res.redirect('/auth/login');
+            }
+            
+            // remove the tokens
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+    
+            await user.save();
+    
+            // Automatically log the user in and redirect them to suvey
+            req.login(user, (err) => {
+                if (err) {
+                    console.log('Error logging in after password reset', err);
+                    return res.redirect('/auth/login');
+                }
+                return res.redirect('/survey'); 
+            });
+        });
+
+}
+
 // make public
 module.exports = {
-    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout, initiateGoogleAuthentication, handleGoogleAuthenticationCallback
+    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout,
+     initiateGoogleAuthentication, handleGoogleAuthenticationCallback,
+     displayForgotPasswordForm,
+     handleForgotPassword,
+     displayPasswordResetForm,
+     processPasswordLink
 };
