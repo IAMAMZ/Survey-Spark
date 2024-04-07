@@ -2,6 +2,7 @@ let User = require('../Models/User');
 const passport = require('passport');
 const crypto = require('crypto');
 const sgMail = require("@sendgrid/mail");
+const axios = require("axios");
 
 let displayRegisterForm = (req, res, next) => {
     let messages = req.session.messages || [];
@@ -98,12 +99,23 @@ let handleGoogleAuthenticationCallback = (req, res, next) => {
 
 const displayForgotPasswordForm = async (req,res)=>{
 
-    res.render('auth/forgotPassword', { 
-        title: 'Password reset', 
-    });
-
+        res.render('auth/forgotPassword', { 
+            title: 'Password reset', 
+            messege:"Plase make sure you click CAPTCHA"
+        });
+    
 }
 const handleForgotPassword = async (req,res)=>{
+
+
+    const token = req.body['g-recaptcha-response'];
+
+    const googleVerifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_CAPTCHA}&response=${token}`;
+    const response = await axios.post(googleVerifyURL);
+
+    if(response.data.success){
+ 
+    
     const { email } = req.body;
 
     console.log(email);
@@ -150,6 +162,13 @@ const handleForgotPassword = async (req,res)=>{
         messege:"something went wrong"
     });
     });
+}
+else{
+    res.render('auth/forgotPassword', { 
+        title: 'Password reset', 
+        message:`Please check i'm not robot recaptcha`
+    }); 
+}
 }
 
 const displayPasswordResetForm = async (req,res)=>{
