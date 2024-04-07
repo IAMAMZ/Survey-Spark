@@ -1,6 +1,7 @@
 let User = require('../Models/User');
 const passport = require('passport');
 const crypto = require('crypto');
+const sgMail = require("@sendgrid/mail");
 
 let displayRegisterForm = (req, res, next) => {
     let messages = req.session.messages || [];
@@ -102,10 +103,59 @@ const displayForgotPasswordForm = async (req,res)=>{
     });
 
 }
+const handleForgotPassword = async (req,res)=>{
+    const { email } = req.body;
+
+    console.log(email);
+    const user = await User.findOne({ email: email });
+    if (!user) {
+        res.render('auth/forgotPassword', { 
+            title: 'Password reset', 
+            message:'This account does not exist'
+        });
+        return;
+    }
+  
+    const token = crypto.randomBytes(20).toString('hex');
+  
+    console.log(token);
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiary
+  
+    await user.save();
+  
+    const resetURL = `http://${req.headers.host}/auth/reset-password/${token}`;
+  
+    const msg = {
+      to: email,
+      from: 'solvesparktechnologies@gmail.com',
+      subject: 'Password Reset',
+      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n
+             Please click on the following link, or paste this into your browser to complete the process:\n\n
+             ${resetURL}\n\n
+             If you did not request this, please ignore this email and your password will remain unchanged.\n`
+    };
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  
+    sgMail.send(msg).then(() => {
+      console.log('Email sent');
+      res.render('auth/passresetmsg', { 
+        title: 'Password reset', 
+    });
+      
+    }).catch((error) => {
+      console.error(error);
+      res.render('auth/forgotPassword', { 
+        title: 'Password reset', 
+        messege:"something went wrong"
+    });
+    });
+}
 
 // make public
 module.exports = {
     displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout,
      initiateGoogleAuthentication, handleGoogleAuthenticationCallback,
-     displayForgotPasswordForm
+     displayForgotPasswordForm,
+     handleForgotPassword 
 };
