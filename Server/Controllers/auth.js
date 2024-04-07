@@ -15,7 +15,7 @@ let displayRegisterForm = (req, res, next) => {
 };
 
 let submitRegister = (req, res, next) => {
-    User.register(new User({ username: req.body.username }), req.body.password, (err, newUser) => {
+    User.register(new User({ username: req.body.username,email:req.body.username }), req.body.password, (err, newUser) => {
         if (err) {
             return res.render('auth/register', { messages: err, noHeaderFooter: true });
         }
@@ -152,10 +152,67 @@ const handleForgotPassword = async (req,res)=>{
     });
 }
 
+const displayPasswordResetForm = async (req,res)=>{
+    const token = req.params.token;
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+        console.log('Password reset token is invalid or expired');
+        return res.redirect('/auth/login');
+    }
+
+    res.render('auth/resetPassword', { 
+        title: 'Reset Password', 
+        token: token
+    });
+
+}
+const processPasswordLink = async (req, res) => {
+        const token = req.params.token;
+        const user = await User.findOne({
+            resetPasswordToken: token,
+            resetPasswordExpires: { $gt: Date.now() }
+        });
+    
+        if (!user) {
+            console.log('Password reset token is invalid or has expired');
+            return res.redirect('/auth/login');
+        }
+    
+        // set their password if all is valid
+        user.setPassword(req.body.password, async (err) => {
+            if (err) {
+                console.log('Error setting new password', err);
+                return res.redirect('/auth/login');
+            }
+            
+            // remove the tokens
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+    
+            await user.save();
+    
+            // Automatically log the user in and redirect them to suvey
+            req.login(user, (err) => {
+                if (err) {
+                    console.log('Error logging in after password reset', err);
+                    return res.redirect('/auth/login');
+                }
+                return res.redirect('/survey'); 
+            });
+        });
+
+}
+
 // make public
 module.exports = {
     displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout,
      initiateGoogleAuthentication, handleGoogleAuthenticationCallback,
      displayForgotPasswordForm,
-     handleForgotPassword 
+     handleForgotPassword,
+     displayPasswordResetForm,
+     processPasswordLink
 };
